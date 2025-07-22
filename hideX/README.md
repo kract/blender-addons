@@ -13,19 +13,22 @@ A powerful Blender add-on that enhances object visibility control by extending t
 ## Installation
 
 ### Method 1: Remote Repository (Recommended)
+
 1. Go to `Edit > Preferences > Extensions`
 2. Click the dropdown arrow next to "Repositories"
 3. Click "Add Remote Repository"
-4. Enter the repository URL: `https://extensions.kract.jp/api/v1/extensions/`
+4. Enter the repository URL: `https://blender.kract.jp/api/v1/extensions/`
 5. Click "Add Repository"
 6. Browse and install "hideX" from the repository
 
 ### Method 2: Drag and Drop (Blender 4.2+)
+
 1. Download the add-on as a ZIP file
 2. Simply drag and drop the ZIP file into Blender
 3. The add-on will be automatically installed and enabled
 
 ### Method 3: Traditional Installation
+
 1. Download the add-on files
 2. Go to `Edit > Preferences > Add-ons`
 3. Click `Install...` and select the ZIP file
@@ -38,12 +41,14 @@ A powerful Blender add-on that enhances object visibility control by extending t
 3. Objects are hidden from both viewport and render
 
 ### Panel Access
+
 1. Open the 3D Viewport
 2. Press `N` to show the sidebar
 3. Navigate to the "Item" tab
 4. Find the "hideX" panel
 
 ### Managing Hidden Objects
+
 - **Hide Selected (H)**: Hide selected objects from viewport and render
 - **Show All Hidden**: Restore all hidden objects to their original state
 - **Individual Show**: Click the eye icon next to any hidden object

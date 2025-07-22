@@ -9,7 +9,7 @@ A powerful Blender add-on that revolutionizes 3D viewport navigation with an int
 - **Blender Default Shortcuts**: All menu items show corresponding numpad shortcuts (e.g., Camera = Numpad 0)
 - **Multilingual Support**: Full Japanese and English language support
 - **Extended Controls**: Additional options for View Selected, View All, Center Cursor, and projection modes
-- **Smart Keyboard Shortcuts**: 
+- **Smart Keyboard Shortcuts**:
   - `Q` - Basic pie menu with essential views
   - `Shift+Q` - Extended pie menu with advanced options
 - **Instant View Switching**: Single-click access to any viewport orientation
@@ -20,19 +20,22 @@ A powerful Blender add-on that revolutionizes 3D viewport navigation with an int
 ## Installation
 
 ### Method 1: Remote Repository (Recommended)
+
 1. Go to `Edit > Preferences > Extensions`
 2. Click the dropdown arrow next to "Repositories"
 3. Click "Add Remote Repository"
-4. Enter the repository URL: `https://extensions.kract.jp/api/v1/extensions/`
+4. Enter the repository URL: `https://blender.kract.jp/api/v1/extensions/`
 5. Click "Add Repository"
 6. Browse and install "Viewpie" from the repository
 
 ### Method 2: Drag and Drop (Blender 4.2+)
+
 1. Download the add-on as a ZIP file
 2. Simply drag and drop the ZIP file into Blender
 3. The add-on will be automatically installed and enabled
 
 ### Method 3: Traditional Installation
+
 1. Download the add-on files
 2. Go to `Edit > Preferences > Add-ons`
 3. Click `Install...` and select the ZIP file
@@ -45,7 +48,7 @@ A powerful Blender add-on that revolutionizes 3D viewport navigation with an int
 Press `Q` in the 3D Viewport to open the basic Viewpie pie menu:
 
 - **→ Right (Numpad 3)** (3 o'clock): Right side view
-- **← Left (Numpad Ctrl+3)** (9 o'clock): Left side view  
+- **← Left (Numpad Ctrl+3)** (9 o'clock): Left side view
 - **↓ Bottom (Numpad Ctrl+7)** (6 o'clock): Bottom view
 - **↑ Top (Numpad 7)** (12 o'clock): Top view
 - **↖ Back (Numpad Ctrl+1)** (10:30): Back view
@@ -69,18 +72,21 @@ Press `Shift+Q` for advanced navigation options:
 ## Workflow Examples
 
 ### Modeling Workflow
+
 1. Press `Q` → Select "Front" to work on front details
 2. Press `Q` → Select "Right" to check side profile
 3. Press `Q` → Select "Top" to adjust top view
 4. Press `Shift+Q` → "View Selected" to focus on current selection
 
 ### Animation/Layout Workflow
+
 1. Press `Q` → "Camera" to check final composition
 2. Press `Q` → "Perspective/Ortho" to toggle projection as needed
 3. Press `Shift+Q` → "View All" to see entire scene layout
 4. Use directional views for precise positioning
 
 ### Architectural Visualization
+
 1. Use Front/Back/Left/Right views for elevation work
 2. Top view for floor plan adjustments
 3. Camera view for final presentation angles
@@ -97,44 +103,47 @@ Press `Shift+Q` for advanced navigation options:
 ## Technical Details
 
 ### Pie Menu Layout Philosophy
+
 - **Cardinal Directions**: Top/Bottom/Left/Right occupy main compass points
 - **Diagonal Positions**: Front/Back views in upper diagonals for easy access
 - **Special Functions**: Camera and projection controls in lower positions
 - **Logical Grouping**: Related functions positioned near each other
 
 ### Projection Handling
+
 - **Smart Toggle**: Automatically switches between Perspective and Orthographic
 - **Force Modes**: Extended menu allows forcing specific projection types
 - **Visual Feedback**: Clear indication of current projection mode
 
 ### Context Sensitivity
+
 - **3D Viewport Only**: Menu only appears in 3D Viewport areas
 - **Error Handling**: Graceful handling of edge cases (no camera, etc.)
 - **Performance**: Lightweight implementation with minimal overhead
 
 ## Keyboard Shortcuts Summary
 
-| Shortcut | Function | Menu Type |
-|----------|----------|-----------|
-| `Q` | Basic Viewpie pie menu | Essential views and projection toggle with numpad shortcuts |
-| `Shift+Q` | Extended Viewpie pie menu | Advanced navigation and view options |
+| Shortcut  | Function                  | Menu Type                                                   |
+| --------- | ------------------------- | ----------------------------------------------------------- |
+| `Q`       | Basic Viewpie pie menu    | Essential views and projection toggle with numpad shortcuts |
+| `Shift+Q` | Extended Viewpie pie menu | Advanced navigation and view options                        |
 
 ### Blender Default Shortcuts Reference
 
 All pie menu items correspond to Blender's default numpad shortcuts:
 
-| View | Numpad Shortcut | Pie Menu Position |
-|------|----------------|-------------------|
-| Front | `Numpad 1` | Top-Right (1:30) |
-| Back | `Numpad Ctrl+1` | Top-Left (10:30) |
-| Right | `Numpad 3` | Right (3:00) |
-| Left | `Numpad Ctrl+3` | Left (9:00) |
-| Perspective/Ortho | `Numpad 5` | Bottom-Right (4:30) |
-| Top | `Numpad 7` | Top (12:00) |
-| Bottom | `Numpad Ctrl+7` | Bottom (6:00) |
-| Camera | `Numpad 0` | Bottom-Left (7:30) |
-| View Selected | `Numpad .` | Extended Menu |
-| View All | `Home` | Extended Menu |
+| View              | Numpad Shortcut | Pie Menu Position   |
+| ----------------- | --------------- | ------------------- |
+| Front             | `Numpad 1`      | Top-Right (1:30)    |
+| Back              | `Numpad Ctrl+1` | Top-Left (10:30)    |
+| Right             | `Numpad 3`      | Right (3:00)        |
+| Left              | `Numpad Ctrl+3` | Left (9:00)         |
+| Perspective/Ortho | `Numpad 5`      | Bottom-Right (4:30) |
+| Top               | `Numpad 7`      | Top (12:00)         |
+| Bottom            | `Numpad Ctrl+7` | Bottom (6:00)       |
+| Camera            | `Numpad 0`      | Bottom-Left (7:30)  |
+| View Selected     | `Numpad .`      | Extended Menu       |
+| View All          | `Home`          | Extended Menu       |
 
 ## Compatibility
 
@@ -163,6 +172,7 @@ All pie menu items correspond to Blender's default numpad shortcuts:
 ## Future Enhancements
 
 The Viewpie system is designed for expansion:
+
 - Additional pie menu layouts
 - Custom view presets
 - Animation timeline integration

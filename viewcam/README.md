@@ -8,7 +8,7 @@ A Blender add-on that instantly sets the current 3D viewport view to the active 
 - **Auto camera view switching**: Automatically switches to camera view after positioning
 - **Lock Camera to View toggle**: Toggle "Lock Camera to View" function when in camera view
 - **Viewport header integration**: Camera icon button in 3D Viewport header
-- **Cross-platform keyboard shortcuts**: 
+- **Cross-platform keyboard shortcuts**:
   - macOS: Cmd+Shift+C / Cmd+Shift+Alt+C
   - Windows/Linux: Ctrl+Shift+C / Ctrl+Shift+Alt+C
 - **Smart UI**: Button only appears when a camera exists in the scene
@@ -18,19 +18,22 @@ A Blender add-on that instantly sets the current 3D viewport view to the active 
 ## Installation
 
 ### Method 1: Remote Repository (Recommended)
+
 1. Go to `Edit > Preferences > Extensions`
 2. Click the dropdown arrow next to "Repositories"
 3. Click "Add Remote Repository"
-4. Enter the repository URL: `https://extensions.kract.jp/api/v1/extensions/`
+4. Enter the repository URL: `https://blender.kract.jp/api/v1/extensions/`
 5. Click "Add Repository"
 6. Browse and install "Viewcam" from the repository
 
 ### Method 2: Drag and Drop (Blender 4.2+)
+
 1. Download the add-on as a ZIP file
 2. Simply drag and drop the ZIP file into Blender
 3. The add-on will be automatically installed and enabled
 
 ### Method 3: Traditional Installation
+
 1. Download the add-on files
 2. Go to `Edit > Preferences > Add-ons`
 3. Click `Install...` and select the ZIP file
@@ -41,12 +44,14 @@ A Blender add-on that instantly sets the current 3D viewport view to the active 
 ### Set View to Camera
 
 #### Method 1: Header Button
+
 1. Navigate to your desired view in the 3D Viewport
 2. Look for the camera icon in the 3D Viewport header
 3. Click the camera icon to set the active camera to match your current view
 4. The viewport will automatically switch to camera view
 
 #### Method 2: Keyboard Shortcut
+
 1. Navigate to your desired view in the 3D Viewport
 2. Press **Cmd+Shift+C** (macOS) or **Ctrl+Shift+C** (Windows/Linux)
 3. The active camera will be set to match your current view
@@ -63,7 +68,9 @@ When you're in camera view, you can toggle the "Lock Camera to View" function:
 ## How It Works
 
 ### Set View to Camera Function
+
 Viewcam captures the current 3D viewport's:
+
 - **Position**: Where you're looking from
 - **Rotation**: The direction you're looking
 - **Perspective**: The viewing angle
@@ -71,7 +78,9 @@ Viewcam captures the current 3D viewport's:
 It then applies this exact transformation to your scene's active camera and automatically switches to camera view, making it easy to position cameras precisely where you want them.
 
 ### Lock Camera to View Function
+
 This feature enables "Lock Camera to View" mode, which allows you to navigate within the camera view. When enabled:
+
 - Moving the viewport will move the camera
 - The camera follows your navigation movements
 - Perfect for fine-tuning camera positions while seeing the actual camera framing
@@ -92,9 +101,9 @@ This feature enables "Lock Camera to View" mode, which allows you to navigate wi
 
 ## Keyboard Shortcuts Summary
 
-| Shortcut | macOS | Windows/Linux | Function |
-|----------|--------|---------------|----------|
-| Set View to Camera | **Cmd+Shift+C** | **Ctrl+Shift+C** | Sets current view to camera and switches to camera view |
+| Shortcut                   | macOS               | Windows/Linux        | Function                                                  |
+| -------------------------- | ------------------- | -------------------- | --------------------------------------------------------- |
+| Set View to Camera         | **Cmd+Shift+C**     | **Ctrl+Shift+C**     | Sets current view to camera and switches to camera view   |
 | Toggle Lock Camera to View | **Cmd+Shift+Alt+C** | **Ctrl+Shift+Alt+C** | Toggles "Lock Camera to View" (only works in camera view) |
 
 ## Troubleshooting

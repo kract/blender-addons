@@ -4,14 +4,14 @@ A curated collection of professional Blender extensions designed to enhance your
 
 ## 🌐 Extension Registry
 
-**https://extensions.kract.jp**
+**https://blender.kract.jp**
 
 Get all extensions directly from our third-party Blender Extension Registry:
 
 1. Go to `Edit > Preferences > Extensions`
 2. Click the dropdown arrow next to "Repositories"
 3. Click "Add Remote Repository"
-4. Enter: `https://extensions.kract.jp/api/v1/extensions/`
+4. Enter: `https://blender.kract.jp/api/v1/extensions/`
 5. Click "Add Repository"
 6. Browse and install any extension from the collection
 
@@ -61,11 +61,6 @@ Get all extensions directly from our third-party Blender Extension Registry:
 **Enhanced SVG import with automatic mesh conversion**
 - **Features**: Import SVG files and convert to mesh objects, automatic origin centering, optimized import workflow
 - **Perfect for**: Logo design integration, 2D to 3D conversion, graphic design workflows
-
-### 🔺 Vexer
-**Progressive geometric primitive creation**
-- **Features**: Create basic geometric primitives with progressive vertex and edge addition (1D→2D→3D)
-- **Perfect for**: Basic modeling, educational purposes, geometric foundation building
 
 ## 🚀 Installation Methods
 

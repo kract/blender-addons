@@ -14,7 +14,7 @@ license = ["SPDX:GPL-3.0-or-later"]
 
 blender_version_min = "4.2.0"
 
-website = "https://github.com/kractjp/blender-addons/tree/main/subamo"
+website = "https://github.com/kract/blender-addons/tree/main/subamo"
 tags = ["System"]
 
 [permissions]

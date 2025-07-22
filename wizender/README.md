@@ -13,23 +13,27 @@ A magical Blender add-on that automatically configures render output settings ba
 ## Installation
 
 ### Method 1: Remote Repository (Recommended)
+
 1. Go to `Edit > Preferences > Extensions`
 2. Click the dropdown arrow next to "Repositories"
 3. Click "Add Remote Repository"
-4. Enter the repository URL: `https://extensions.kract.jp/api/v1/extensions/`
+4. Enter the repository URL: `https://blender.kract.jp/api/v1/extensions/`
 5. Click "Add Repository"
 6. Browse and install "Wizender" from the repository
 
 ### Method 2: Extension Installation (Blender 4.2+)
+
 1. Go to **Edit > Preferences > Extensions**
 2. Click **Install Extension**
 3. Select `wizender_v1.0.0.zip` and install
 
 ### Method 3: Drag & Drop Installation (Blender 4.2+)
+
 1. Drag and drop `wizender_v1.0.0.zip` into the Blender viewport
 2. Click **Install** in the confirmation dialog
 
 ### Method 4: Traditional Add-on Installation (Blender 3.0+)
+
 1. Download `wizender_v1.0.0.zip`
 2. Go to **Edit > Preferences > Add-ons**
 3. Click **Install** and select the ZIP file
@@ -38,6 +42,7 @@ A magical Blender add-on that automatically configures render output settings ba
 ## Usage
 
 ### Configuration
+
 1. Go to **Edit > Preferences > Add-ons**
 2. Find **Wizender** and expand it
 3. Configure your preferred settings:
@@ -47,9 +52,11 @@ A magical Blender add-on that automatically configures render output settings ba
    - **Color Depth**: 32-bit Float, 16-bit Half Float, or 8-bit
 
 ### Automatic Application
+
 Settings are automatically applied when you save your project.
 
 ### Manual Application
+
 1. Go to **Properties > Output Properties**
 2. Expand the **Wizender** panel
 3. Click **Apply Settings**
@@ -69,6 +76,7 @@ Settings are automatically applied when you save your project.
 ## Technical Specifications
 
 ### Architecture
+
 - **Core Logic**: `set_render_settings()` function handles the main functionality
 - **AddonPreferences**: `WIZENDER_AddonPreferences` provides persistent settings storage
 - **UI Panel**: `WIZENDER_PT_output_panel` provides user interface in Properties panel
@@ -76,6 +84,7 @@ Settings are automatically applied when you save your project.
 - **Handler**: `auto_render_on_save()` automatically triggers on file save with `@persistent` decorator
 
 ### Extension System Support
+
 - Traditional add-on installation (Blender 3.0+)
 - New extension system (Blender 4.2+) support
 - Metadata management via `blender_manifest.toml`

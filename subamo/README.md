@@ -5,6 +5,7 @@ A simple and efficient Blender add-on that automatically organizes backup files 
 ## Problem Solved
 
 Blender's default backup behavior clutters project directories with backup files:
+
 - `project.blend`, `project.blend1`, `project.blend2` all in the same folder
 - Backup files mixed with main project files
 - Difficult to locate the current working file among backups
@@ -23,19 +24,22 @@ Blender's default backup behavior clutters project directories with backup files
 ## Installation
 
 ### Method 1: Remote Repository (Recommended)
+
 1. Go to `Edit > Preferences > Extensions`
 2. Click the dropdown arrow next to "Repositories"
 3. Click "Add Remote Repository"
-4. Enter the repository URL: `https://extensions.kract.jp/api/v1/extensions/`
+4. Enter the repository URL: `https://blender.kract.jp/api/v1/extensions/`
 5. Click "Add Repository"
 6. Browse and install "Subamo" from the repository
 
 ### Method 2: Drag and Drop (Blender 4.2+)
+
 1. Download the add-on as a ZIP file
 2. Simply drag and drop the ZIP file into Blender
 3. The add-on will be automatically installed and enabled
 
 ### Method 3: Traditional Installation
+
 1. Download the add-on files
 2. Go to `Edit > Preferences > Add-ons`
 3. Click `Install...` and select the ZIP file
@@ -46,11 +50,13 @@ Blender's default backup behavior clutters project directories with backup files
 Once installed, Subamo works automatically with minimal user interaction:
 
 ### Automatic Organization
+
 - Save your file normally (Cmd+S or Ctrl+S)
 - Backup files are automatically moved to the `backup` folder
 - No user intervention required
 
 ### Backup Management Panel
+
 1. Open the 3D Viewport
 2. Press `N` to show the right panel
 3. Find the "Subamo" tab
@@ -63,6 +69,7 @@ Once installed, Subamo works automatically with minimal user interaction:
 ## Backup Settings
 
 Subamo uses Blender's built-in backup settings:
+
 - Go to `Edit > Preferences > Save & Load`
 - Set "Save Versions" to your desired number of backup files (1-32)
 - Subamo will automatically organize the number of backups you specify
@@ -93,6 +100,7 @@ project_folder/
 ## Panel Features
 
 The Subamo panel displays:
+
 - **Backup file list**: Up to 5 most recent backups with scroll indication
 - **File details**: Number, date, size, and management actions
 - **Total statistics**: File count and total size
@@ -101,6 +109,7 @@ The Subamo panel displays:
 ## Workflow Examples
 
 ### Daily Modeling Workflow
+
 1. Open your project file
 2. Work and save regularly (Cmd+S)
 3. Backup files automatically organized in `backup/` folder
@@ -108,12 +117,14 @@ The Subamo panel displays:
 5. Clean project folder with only main .blend file visible
 
 ### Project Handoff
+
 1. Share project folder
 2. Recipient sees clean structure with main file prominent
 3. Backup files safely stored in `backup/` subdirectory
 4. All backup functionality preserved
 
 ### Backup Recovery
+
 1. Open Subamo panel
 2. Browse available backup files with dates
 3. Click folder icon to open any previous version
@@ -131,18 +142,21 @@ The Subamo panel displays:
 ## Technical Details
 
 ### Automatic Processing
+
 - Monitors file save events using Blender's handler system
 - Identifies backup files by extension pattern (.blend1, .blend2, etc.)
 - Creates `backup/` folder when needed
 - Moves files while preserving timestamps and metadata
 
 ### Safety Features
+
 - **Non-destructive**: Never deletes backup files automatically
 - **Conflict handling**: Overwrites older backups with same name safely
 - **Error recovery**: Continues operation if individual moves fail
 - **Preserve timestamps**: Maintains original file creation dates
 
 ### User Interface
+
 - **Multilingual**: Full English and Japanese support
 - **Icon-based actions**: Clean, intuitive interface
 - **Responsive design**: Adapts to different panel sizes
