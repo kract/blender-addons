@@ -40,12 +40,6 @@ Get all extensions directly from our third-party Blender Extension Registry:
 - **Features**: Auto-configuration on save, project name placeholders, customizable presets
 - **Perfect for**: Consistent render output, automated workflows, batch rendering
 
-### 👁️ hideX (/ˈhaɪdeks/)
-**Enhanced object visibility control**
-- **Hotkeys**: `H` (enhanced hide)
-- **Features**: Hide objects from both viewport and render, individual object management, state restoration
-- **Perfect for**: Scene organization, render optimization, clean viewport workflows
-
 ### 📁 Subamo
 **Automatic backup file organization**
 - **Features**: Auto-organize backup files into subdirectories, backup management panel, file information display
@@ -113,7 +107,6 @@ npx kract@latest blender deploy
 | **Viewcam** | 1.0.0 | `Cmd/Ctrl+Shift+C` | Camera positioning and navigation |
 | **Versave** | 1.0.1 | `Cmd/Ctrl+Alt+S` / `Cmd/Ctrl+Shift+E` | Enhanced file versioning system with version manager |
 | **Wizender** | 1.0.1 | Auto on save | Smart render settings automation |
-| **hideX** | 1.0.0 | `H` | Enhanced object visibility control |
 | **Subamo** | 1.0.1 | Auto on save | Automatic backup file organization |
 | **Nukeshima** | 1.0.0 | `X` / `Shift+X` | Silent object deletion |
 | **SVG Importer Plus** | 1.0.1 | Import menu | Enhanced SVG import with mesh conversion |
