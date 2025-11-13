@@ -171,8 +171,9 @@ class VIEWPIE_MT_pie_menu(Menu):
         op = pie.operator("viewpie.set_view", text=get_translation("Camera"), icon='CAMERA_DATA')
         op.view_type = 'CAMERA'
         
-        # Bottom-Right (4:30) - Toggle Projection
-        pie.operator("viewpie.toggle_projection", text=get_translation("Perspective/Ortho"), icon='VIEW_PERSPECTIVE')
+        # Bottom-Right (4:30) - View Selected
+        op = pie.operator("viewpie.set_view", text=get_translation("View Selected"), icon='ZOOM_SELECTED')
+        op.view_type = 'SELECTED'
 
 class VIEWPIE_MT_pie_menu_extended(Menu):
     """Extended Viewpie pie menu with additional options"""
@@ -237,6 +238,12 @@ class VIEWPIE_OT_call_pie_menu(bpy.types.Operator):
 
 # Keymap management
 addon_keymaps = []
+_original_builtin_viewpie_draw = None
+
+
+def _viewpie_builtin_draw(self, context):
+    """Redirect Blender's default view pie menu to Viewpie's layout."""
+    return VIEWPIE_MT_pie_menu.draw(self, context)
 
 def register():
     """Register addon"""
@@ -245,6 +252,14 @@ def register():
     bpy.utils.register_class(VIEWPIE_OT_call_pie_menu)
     bpy.utils.register_class(VIEWPIE_MT_pie_menu)
     bpy.utils.register_class(VIEWPIE_MT_pie_menu_extended)
+
+    # Hook into Blender's default VIEW3D_MT_view_pie so external keymaps
+    # (like .py) that call it will display Viewpie's layout.
+    global _original_builtin_viewpie_draw
+    builtin_viewpie = getattr(bpy.types, "VIEW3D_MT_view_pie", None)
+    if builtin_viewpie and _original_builtin_viewpie_draw is None:
+        _original_builtin_viewpie_draw = builtin_viewpie.draw
+        builtin_viewpie.draw = _viewpie_builtin_draw
     
     # Add keymap
     wm = bpy.context.window_manager
@@ -272,6 +287,12 @@ def register():
 
 def unregister():
     """Unregister addon"""
+    global _original_builtin_viewpie_draw
+    builtin_viewpie = getattr(bpy.types, "VIEW3D_MT_view_pie", None)
+    if builtin_viewpie and _original_builtin_viewpie_draw is not None:
+        builtin_viewpie.draw = _original_builtin_viewpie_draw
+        _original_builtin_viewpie_draw = None
+
     bpy.utils.unregister_class(VIEWPIE_OT_set_view)
     bpy.utils.unregister_class(VIEWPIE_OT_toggle_projection)
     bpy.utils.unregister_class(VIEWPIE_OT_call_pie_menu)

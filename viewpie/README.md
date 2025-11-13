@@ -5,10 +5,10 @@ A powerful Blender add-on that revolutionizes 3D viewport navigation with an int
 ## Features
 
 - **Dual Pie Menu System**: Basic and Extended pie menus for different workflow needs
-- **8-Direction Navigation**: Access Front, Back, Left, Right, Top, Bottom, Camera, and Projection toggle
+- **8-Direction Navigation**: Access Front, Back, Left, Right, Top, Bottom, Camera, and View Selected
 - **Blender Default Shortcuts**: All menu items show corresponding numpad shortcuts (e.g., Camera = Numpad 0)
 - **Multilingual Support**: Full Japanese and English language support
-- **Extended Controls**: Additional options for View Selected, View All, Center Cursor, and projection modes
+- **Extended Controls**: Additional options for View All, Center Cursor, and projection modes
 - **Smart Keyboard Shortcuts**:
   - `Q` - Basic pie menu with essential views
   - `Shift+Q` - Extended pie menu with advanced options
@@ -54,7 +54,7 @@ Press `Q` in the 3D Viewport to open the basic Viewpie pie menu:
 - **↖ Back (Numpad Ctrl+1)** (10:30): Back view
 - **↗ Front (Numpad 1)** (1:30): Front view
 - **📷 Camera (Numpad 0)** (7:30): Camera view
-- **👁 Perspective/Ortho (Numpad 5)** (4:30): Toggle projection mode
+- **🎯 View Selected (Numpad .)** (4:30): Focus on current selection
 
 ### Extended Pie Menu (Shift+Q)
 
@@ -123,27 +123,28 @@ Press `Shift+Q` for advanced navigation options:
 
 ## Keyboard Shortcuts Summary
 
-| Shortcut  | Function                  | Menu Type                                                   |
-| --------- | ------------------------- | ----------------------------------------------------------- |
-| `Q`       | Basic Viewpie pie menu    | Essential views and projection toggle with numpad shortcuts |
-| `Shift+Q` | Extended Viewpie pie menu | Advanced navigation and view options                        |
+| Shortcut  | Function                  | Menu Type                                                 |
+| --------- | ------------------------- | --------------------------------------------------------- |
+| `Q`       | Basic Viewpie pie menu    | Essential views plus instant View Selected focus          |
+| `Shift+Q` | Extended Viewpie pie menu | Advanced navigation, projection, and utility view options |
 
 ### Blender Default Shortcuts Reference
 
 All pie menu items correspond to Blender's default numpad shortcuts:
 
-| View              | Numpad Shortcut | Pie Menu Position   |
-| ----------------- | --------------- | ------------------- |
-| Front             | `Numpad 1`      | Top-Right (1:30)    |
-| Back              | `Numpad Ctrl+1` | Top-Left (10:30)    |
-| Right             | `Numpad 3`      | Right (3:00)        |
-| Left              | `Numpad Ctrl+3` | Left (9:00)         |
-| Perspective/Ortho | `Numpad 5`      | Bottom-Right (4:30) |
-| Top               | `Numpad 7`      | Top (12:00)         |
-| Bottom            | `Numpad Ctrl+7` | Bottom (6:00)       |
-| Camera            | `Numpad 0`      | Bottom-Left (7:30)  |
-| View Selected     | `Numpad .`      | Extended Menu       |
-| View All          | `Home`          | Extended Menu       |
+| View              | Numpad Shortcut | Pie Menu Position      |
+| ----------------- | --------------- | ---------------------- |
+| Front             | `Numpad 1`      | Top-Right (1:30)       |
+| Back              | `Numpad Ctrl+1` | Top-Left (10:30)       |
+| Right             | `Numpad 3`      | Right (3:00)           |
+| Left              | `Numpad Ctrl+3` | Left (9:00)            |
+| Perspective       | `Numpad 5`      | Extended Menu (10:30)  |
+| Orthographic      | `Numpad 5`      | Extended Menu (1:30)   |
+| Top               | `Numpad 7`      | Top (12:00)            |
+| Bottom            | `Numpad Ctrl+7` | Bottom (6:00)          |
+| Camera            | `Numpad 0`      | Bottom-Left (7:30)     |
+| View Selected     | `Numpad .`      | Bottom-Right (4:30)    |
+| View All          | `Home`          | Extended Menu (9:00)   |
 
 ## Compatibility
 
