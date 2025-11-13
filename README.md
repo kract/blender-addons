@@ -45,6 +45,12 @@ Get all extensions directly from our third-party Blender Extension Registry:
 - **Features**: Auto-organize backup files into subdirectories, backup management panel, file information display
 - **Perfect for**: Clean project folders, backup management, professional project organization
 
+### ⌨️ Keymap Toolkit
+**Central hub for curated keymap tweaks**
+- **Hotkeys**: `Alt` + `Left Mouse Drag` (West/South/East directions in Edit Mode)
+- **Features**: One-stop add-on for custom keymaps; current release adds instant vertex/edge/face select switching via Alt+LMB gestures
+- **Perfect for**: Modelers who want fast mode switching and a single place to manage future custom shortcuts
+
 ### 🗑️ Nukeshima
 **Silent object deletion**
 - **Hotkeys**: `X` (smart delete) / `Shift+X` (delete menu)
@@ -108,6 +114,7 @@ npx kract@latest blender deploy
 | **Versave** | 1.0.1 | `Cmd/Ctrl+Alt+S` / `Cmd/Ctrl+Shift+E` | Enhanced file versioning system with version manager |
 | **Wizender** | 1.0.1 | Auto on save | Smart render settings automation |
 | **Subamo** | 1.0.1 | Auto on save | Automatic backup file organization |
+| **Keymap Toolkit** | 1.0.0 | `Alt` + `LMB Drag (West/South/East)` | Central hub for curated keymap tweaks |
 | **Nukeshima** | 1.0.0 | `X` / `Shift+X` | Silent object deletion |
 | **SVG Importer Plus** | 1.0.1 | Import menu | Enhanced SVG import with mesh conversion |
 | **Vexer** | 1.0.0 | Add menu | Progressive geometric primitive creation |
