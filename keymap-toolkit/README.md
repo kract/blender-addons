@@ -1,6 +1,6 @@
 # Keymap Toolkit
 
-A utility add-on that centralizes Blender keymap tweaks in one place. The first release includes the Alt + Left Mouse drag gestures extracted from the `.idea/.py` keymap so you can quickly switch between vertex, edge, and face selection modes without hunting through menus.
+A utility add-on that centralizes Blender keymap tweaks in one place. The first release includes Alt + Left Mouse drag gestures so you can quickly switch between vertex, edge, and face selection modes without hunting through menus.
 
 ## Features
 
@@ -8,6 +8,12 @@ A utility add-on that centralizes Blender keymap tweaks in one place. The first 
   - Drag **West** → Vertex Select
   - Drag **South** → Edge Select
   - Drag **East** → Face Select
+- **Z key shading toggle**:
+  - Press `Z` to cycle through shading modes: Wireframe → Solid → Material Preview → Rendered → Wireframe
+- **Axis constraints**:
+  - `Ctrl+X` → Constrain to X axis (for translate, rotate, scale)
+  - `Ctrl+Y` → Constrain to Y axis (for translate, rotate, scale)
+  - `Ctrl+Z` → Constrain to Z axis (for translate, rotate, scale)
 - Built with future expansion in mind so additional custom keymaps can live in a single add-on.
 - Keeps your default keymap untouched—enable or disable the tweaks in one place.
 
@@ -30,6 +36,8 @@ A utility add-on that centralizes Blender keymap tweaks in one place. The first 
 3. Click **Install...**, choose the ZIP, and enable **Keymap Toolkit**.
 
 ## Usage
+
+### Select Mode Gestures
 1. Enter Edit Mode on any mesh object.
 2. Hold `Alt` and drag with the **Left Mouse Button**:
    - Drag West to switch to Vertex Select.
@@ -37,4 +45,15 @@ A utility add-on that centralizes Blender keymap tweaks in one place. The first 
    - Drag East to switch to Face Select.
 3. Release the mouse to confirm the selection mode change.
 
-That's it—enjoy rapid select mode switching without extra UI clutter. As new custom keymaps are added, they'll appear in this toolkit automatically when you update the add-on.
+### Z Key Shading Toggle
+- Press `Z` in the 3D Viewport to cycle through shading modes:
+  - Wireframe → Solid → Material Preview → Rendered → Wireframe
+
+### Axis Constraints
+- During transform operations (move, rotate, scale), press:
+  - `Ctrl+X` to constrain movement to X axis
+  - `Ctrl+Y` to constrain movement to Y axis
+  - `Ctrl+Z` to constrain movement to Z axis
+- Works with translate (`G`), rotate (`R`), and scale (`S`) operations.
+
+That's it—enjoy rapid workflow improvements without extra UI clutter. As new custom keymaps are added, they'll appear in this toolkit automatically when you update the add-on.

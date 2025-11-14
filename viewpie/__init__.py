@@ -254,7 +254,7 @@ def register():
     bpy.utils.register_class(VIEWPIE_MT_pie_menu_extended)
 
     # Hook into Blender's default VIEW3D_MT_view_pie so external keymaps
-    # (like .py) that call it will display Viewpie's layout.
+    # that call it will display Viewpie's layout.
     global _original_builtin_viewpie_draw
     builtin_viewpie = getattr(bpy.types, "VIEW3D_MT_view_pie", None)
     if builtin_viewpie and _original_builtin_viewpie_draw is None:
