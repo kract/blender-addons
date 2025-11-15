@@ -68,29 +68,11 @@ def register():
     kmi_z = km.keymap_items.new('transform.translate', 'Z', 'PRESS')
     new_keymap_items.append((km, kmi_z))
     
-    # Handle axis constraint: Y axis constraint moved to C key
-    # Axis constraints in Blender are handled during transform operations
-    # The Transform Modal Map handles axis constraints during transform
-    km_transform = kc.keymaps.get('Transform Modal Map')
-    if km_transform:
-        # Disable Y key for axis constraint during transform
-        for kmi in km_transform.keymap_items:
-            if kmi.type == 'Y' and kmi.value == 'PRESS' and not kmi.shift and not kmi.ctrl and not kmi.alt:
-                # Disable Y key for axis constraint
-                kmi.active = False
-                disabled_keymap_items.append((km_transform, kmi))
-        
-        # Add C key for Y axis constraint during transform
-        # We need to find the constraint operator and add C key binding
-        # The constraint is typically set by transform.constraint_set
-        # We'll add a keymap item that sets Y axis constraint when C is pressed
-        kmi_c = km_transform.keymap_items.new('transform.constraint_set', 'C', 'PRESS')
-        if hasattr(kmi_c, 'properties'):
-            kmi_c.properties.mode = 'CONSTRAIN_AXIS'
-            kmi_c.properties.orient = 'GLOBAL'
-            # Set constraint to Y axis
-            kmi_c.properties.constraint_axis = (False, True, False)
-        addon_keymaps.append((km_transform, kmi_c))
+    # Note: Axis constraint modification (Y to C) is not directly possible
+    # because Transform Modal Map is a modal keymap that cannot be modified
+    # through the standard keymap API. This would require a custom modal operator
+    # which is beyond the scope of this addon. Users will need to manually
+    # configure axis constraints in Blender's keymap preferences if needed.
 
 
 def unregister():

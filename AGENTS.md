@@ -70,3 +70,49 @@ When working with this repository:
 ### Reference
 
 For detailed specifications, refer to: https://semver.org/
+
+## Blender Manifest ID Rules
+
+**Important**: The `id` field in `blender_manifest.toml` must follow strict identifier rules.
+
+### Rules
+
+1. **Allowed Characters**: The `id` field can only contain:
+   - Lowercase letters (a-z)
+   - Numbers (0-9)
+   - Underscore (`_`) as the only allowed special character for word separation
+
+2. **Prohibited Characters**: The following characters are **NOT allowed** in the `id` field:
+   - Hyphen (`-`)
+   - Space
+   - Any other special characters
+
+3. **Naming Convention**: 
+   - Use lowercase letters only
+   - **When word separation is needed, use underscores (`_`) instead of hyphens (`-`)**
+   - Single-word IDs don't require underscores
+   - Examples of valid IDs:
+     - `viewpie` ✓ (single word, no separator needed)
+     - `keymap_toolkit` ✓ (multiple words, underscore used)
+     - `svg_importer_plus` ✓ (multiple words, underscore used)
+   - Examples of invalid IDs:
+     - `keymap-toolkit` ✗ (hyphen not allowed, use underscore)
+     - `keymap toolkit` ✗ (space not allowed)
+     - `KeymapToolkit` ✗ (uppercase not allowed)
+
+4. **Directory Name vs ID**: 
+   - Directory names can use hyphens (e.g., `keymap-toolkit/`, `svg-importer-plus/`)
+   - When the `id` in `blender_manifest.toml` needs word separation, **convert hyphens to underscores** (e.g., `keymap-toolkit/` → `id = "keymap_toolkit"`)
+   - Single-word directory names don't need conversion (e.g., `viewpie/` → `id = "viewpie"`)
+
+### Implementation
+
+- When creating a new addon, if the directory name uses hyphens, convert them to underscores in the `id` field
+- Single-word names can be used as-is without underscores
+- This is required because Blender's extension system validates the `id` as a valid identifier, and hyphens are not allowed in identifiers
+
+### Error Prevention
+
+- Using hyphens in the `id` field will cause the error: `key "id" invalid: Not a valid identifier`
+- This error occurs during package generation when Blender validates the manifest
+- **Remember**: Use underscores (`_`) for word separation, not hyphens (`-`)
