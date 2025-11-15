@@ -9,7 +9,8 @@ tagline = "Set current viewport view to active camera instantly"
 version = "1.0.0"
 type = "add-on"
 
-maintainer = "KRACT"
+maintainer = "KRACT <developer@kract.jp>"
+copyright = "KRACT"
 license = ["SPDX:GPL-3.0-or-later"]
 
 blender_version_min = "4.2.0"
