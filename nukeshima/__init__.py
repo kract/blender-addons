@@ -298,13 +298,24 @@ def register():
 
 def unregister():
     """Unregister addon"""
-    bpy.utils.unregister_class(NUKESHIMA_OT_silent_delete)
-    bpy.utils.unregister_class(NUKESHIMA_OT_smart_delete)
-    bpy.utils.unregister_class(NUKESHIMA_MT_delete_menu)
+    # Safely unregister classes
+    classes_to_unregister = [
+        NUKESHIMA_OT_silent_delete,
+        NUKESHIMA_OT_smart_delete,
+        NUKESHIMA_MT_delete_menu
+    ]
+    for cls in classes_to_unregister:
+        try:
+            bpy.utils.unregister_class(cls)
+        except RuntimeError:
+            pass  # Already unregistered
     
     # Remove keymap
     for km, kmi in addon_keymaps:
-        km.keymap_items.remove(kmi)
+        try:
+            km.keymap_items.remove(kmi)
+        except (KeyError, ReferenceError):
+            pass  # Keymap item already removed
     addon_keymaps.clear()
 
 if __name__ == "__main__":

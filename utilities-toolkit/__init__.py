@@ -413,14 +413,25 @@ def register():
 
 
 def unregister():
+    # Safely unregister classes
     for cls in classes:
-        bpy.utils.unregister_class(cls)
+        try:
+            bpy.utils.unregister_class(cls)
+        except RuntimeError:
+            pass  # Already unregistered
 
-    bpy.types.VIEW3D_MT_object_context_menu.remove(draw_inmenu)
+    # Safely remove menu draw function
+    try:
+        bpy.types.VIEW3D_MT_object_context_menu.remove(draw_inmenu)
+    except (ValueError, AttributeError):
+        pass  # Already removed or doesn't exist
 
     # KEYMAP
     for km, kmi in addon_keymaps:
-        km.keymap_items.remove(kmi)
+        try:
+            km.keymap_items.remove(kmi)
+        except (KeyError, ReferenceError):
+            pass  # Keymap item already removed
     addon_keymaps.clear()
 
 

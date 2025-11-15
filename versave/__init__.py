@@ -444,14 +444,25 @@ def register():
 
 def unregister():
     """アドオン登録解除"""
-    bpy.utils.unregister_class(VERSAVE_OT_save_incremental)
-    bpy.utils.unregister_class(VERSAVE_OT_version_manager)
-    bpy.utils.unregister_class(VERSAVE_OT_open_version)
-    bpy.utils.unregister_class(VERSAVE_OT_save_initial)
+    # Safely unregister classes
+    classes_to_unregister = [
+        VERSAVE_OT_save_incremental,
+        VERSAVE_OT_version_manager,
+        VERSAVE_OT_open_version,
+        VERSAVE_OT_save_initial
+    ]
+    for cls in classes_to_unregister:
+        try:
+            bpy.utils.unregister_class(cls)
+        except RuntimeError:
+            pass  # Already unregistered
     
     # キーボードショートカットを削除
     for km, kmi in addon_keymaps:
-        km.keymap_items.remove(kmi)
+        try:
+            km.keymap_items.remove(kmi)
+        except (KeyError, ReferenceError):
+            pass  # Keymap item already removed
     addon_keymaps.clear()
 
 if __name__ == "__main__":

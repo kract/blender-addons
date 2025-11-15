@@ -162,13 +162,29 @@ def register():
 
 def unregister():
     """アドオン登録解除"""
-    bpy.utils.unregister_class(VIEWCAM_OT_set_view_to_camera)
-    bpy.utils.unregister_class(VIEWCAM_OT_toggle_camera_to_view)
-    bpy.types.VIEW3D_HT_header.remove(draw_viewcam_button)
+    # Safely unregister classes
+    classes_to_unregister = [
+        VIEWCAM_OT_set_view_to_camera,
+        VIEWCAM_OT_toggle_camera_to_view
+    ]
+    for cls in classes_to_unregister:
+        try:
+            bpy.utils.unregister_class(cls)
+        except RuntimeError:
+            pass  # Already unregistered
+    
+    # Safely remove menu draw function
+    try:
+        bpy.types.VIEW3D_HT_header.remove(draw_viewcam_button)
+    except (ValueError, AttributeError):
+        pass  # Already removed or doesn't exist
     
     # キーボードショートカットを削除
     for km, kmi in addon_keymaps:
-        km.keymap_items.remove(kmi)
+        try:
+            km.keymap_items.remove(kmi)
+        except (KeyError, ReferenceError):
+            pass  # Keymap item already removed
     addon_keymaps.clear()
 
 

@@ -293,15 +293,26 @@ def unregister():
         builtin_viewpie.draw = _original_builtin_viewpie_draw
         _original_builtin_viewpie_draw = None
 
-    bpy.utils.unregister_class(VIEWPIE_OT_set_view)
-    bpy.utils.unregister_class(VIEWPIE_OT_toggle_projection)
-    bpy.utils.unregister_class(VIEWPIE_OT_call_pie_menu)
-    bpy.utils.unregister_class(VIEWPIE_MT_pie_menu)
-    bpy.utils.unregister_class(VIEWPIE_MT_pie_menu_extended)
+    # Safely unregister classes
+    classes_to_unregister = [
+        VIEWPIE_OT_set_view,
+        VIEWPIE_OT_toggle_projection,
+        VIEWPIE_OT_call_pie_menu,
+        VIEWPIE_MT_pie_menu,
+        VIEWPIE_MT_pie_menu_extended
+    ]
+    for cls in classes_to_unregister:
+        try:
+            bpy.utils.unregister_class(cls)
+        except RuntimeError:
+            pass  # Already unregistered
     
     # Remove keymap
     for km, kmi in addon_keymaps:
-        km.keymap_items.remove(kmi)
+        try:
+            km.keymap_items.remove(kmi)
+        except (KeyError, ReferenceError):
+            pass  # Keymap item already removed
     addon_keymaps.clear()
 
 if __name__ == "__main__":

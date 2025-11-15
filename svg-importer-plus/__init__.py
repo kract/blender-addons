@@ -280,8 +280,18 @@ def register():
 def unregister():
     """アドオン登録解除"""
     SVGTranslations.unregister_translations(__name__)
-    bpy.types.TOPBAR_MT_file_import.remove(menu_func_import)
-    bpy.utils.unregister_class(IMPORT_OT_svg_plus)
+    
+    # Safely remove menu function
+    try:
+        bpy.types.TOPBAR_MT_file_import.remove(menu_func_import)
+    except (ValueError, AttributeError):
+        pass  # Already removed or doesn't exist
+    
+    # Safely unregister class
+    try:
+        bpy.utils.unregister_class(IMPORT_OT_svg_plus)
+    except RuntimeError:
+        pass  # Already unregistered
 
 
 if __name__ == "__main__":

@@ -195,12 +195,20 @@ def register():
         print("[Wizender] Save handler registered.")
 
 def unregister():
+    # Safely unregister classes
     for cls in reversed(classes):
-        bpy.utils.unregister_class(cls)
+        try:
+            bpy.utils.unregister_class(cls)
+        except RuntimeError:
+            pass  # Already unregistered
 
+    # Safely remove handler
     if auto_render_on_save in bpy.app.handlers.save_post:
-        bpy.app.handlers.save_post.remove(auto_render_on_save)
-        print("[Wizender] Save handler unregistered.")
+        try:
+            bpy.app.handlers.save_post.remove(auto_render_on_save)
+            print("[Wizender] Save handler unregistered.")
+        except (ValueError, AttributeError):
+            pass  # Already removed
 
 if __name__ == "__main__":
     register()

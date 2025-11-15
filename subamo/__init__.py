@@ -309,7 +309,10 @@ def unregister():
     """アドオン登録解除"""
     # ハンドラーを削除
     if save_post_handler in bpy.app.handlers.save_post:
-        bpy.app.handlers.save_post.remove(save_post_handler)
+        try:
+            bpy.app.handlers.save_post.remove(save_post_handler)
+        except (ValueError, AttributeError):
+            pass  # Already removed
     
     # 翻訳を解除
     try:
@@ -318,9 +321,17 @@ def unregister():
         # 登録されていない場合は無視
         pass
     
-    bpy.utils.unregister_class(SUBAMO_PT_panel)
-    bpy.utils.unregister_class(SUBAMO_OT_open_backup)
-    bpy.utils.unregister_class(SUBAMO_OT_delete_backup)
+    # Safely unregister classes
+    classes_to_unregister = [
+        SUBAMO_PT_panel,
+        SUBAMO_OT_open_backup,
+        SUBAMO_OT_delete_backup
+    ]
+    for cls in classes_to_unregister:
+        try:
+            bpy.utils.unregister_class(cls)
+        except RuntimeError:
+            pass  # Already unregistered
 
 if __name__ == "__main__":
     register()
