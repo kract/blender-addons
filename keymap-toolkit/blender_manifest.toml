@@ -15,9 +15,6 @@ blender_version_min = "4.2.0"
 website = "https://github.com/kract/blender-addons/tree/main/keymap-toolkit"
 tags = ["3D View", "User Interface", "Keymap"]
 
-[permissions]
-# No special permissions required for this add-on
-
 [build]
 optimized_size = true
 
