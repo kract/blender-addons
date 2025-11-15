@@ -116,3 +116,34 @@ For detailed specifications, refer to: https://semver.org/
 - Using hyphens in the `id` field will cause the error: `key "id" invalid: Not a valid identifier`
 - This error occurs during package generation when Blender validates the manifest
 - **Remember**: Use underscores (`_`) for word separation, not hyphens (`-`)
+
+## README Language Policy
+
+**Important**: All README files must be written in English.
+
+### Rules
+
+1. **Language Requirement**: All README files (`.md` files in addon directories) must be written in English only.
+
+2. **No Exceptions**: This rule applies to:
+   - Main README files (`README.md`)
+   - Any documentation files in addon directories
+   - Installation instructions
+   - Usage guides
+   - Feature descriptions
+
+3. **Code Comments**: While code comments can be in any language, README documentation must be in English for consistency and accessibility.
+
+### Rationale
+
+- English is the standard language for open-source software documentation
+- Ensures accessibility for international users and contributors
+- Maintains consistency across all addons in the repository
+- Aligns with Blender's international community standards
+
+### Enforcement
+
+When creating or updating README files:
+- Always write in English
+- If translating from another language, ensure proper English grammar and clarity
+- Use clear, concise language suitable for technical documentation
