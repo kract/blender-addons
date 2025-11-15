@@ -1,6 +1,3 @@
-# Blender extension manifest for Wizender
-# This enables installation as a ZIP file and drag-and-drop support in Blender 4.2+
-
 schema_version = "1.0.0"
 
 id = "wizender"
