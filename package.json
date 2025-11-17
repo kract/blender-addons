@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "package": "npx kract@latest blender package",
-    "init": "npx kract@latest blender init",
     "deploy": "npx kract@latest blender deploy"
   },
   "keywords": [
