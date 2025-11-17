@@ -1,4 +1,4 @@
-# GZR Custom Keymap (C)2024 KRACT
+# GZRKeymap (C)2024 KRACT
 # 
 # ##### BEGIN GPL LICENSE BLOCK #####
 # 
@@ -17,7 +17,7 @@
 # ##### END GPL LICENSE BLOCK #####
 
 bl_info = {
-    "name": "GZR Custom Keymap",
+    "name": "GZRKeymap",
     "author": "KRACT",
     "version": (1, 0, 0),
     "blender": (4, 2, 0),
@@ -31,6 +31,15 @@ import bpy
 from bpy.props import *
 from bpy.types import AddonPreferences
 import rna_keymap_ui
+
+class GZR_OT_noop(bpy.types.Operator):
+    """No operation - disables the key"""
+    bl_idname = "gzr.noop"
+    bl_label = "No Operation"
+    bl_options = {'INTERNAL'}
+
+    def execute(self, context):
+        return {'FINISHED'}
 
 class GZR_KEYMAP_AddonPreferences(AddonPreferences):
     bl_idname = __name__
@@ -87,9 +96,9 @@ class GZR_KEYMAP_AddonPreferences(AddonPreferences):
         if self.tab_addon_menu == "LINK":
             row = layout.row()
             row.label(text="Link:")
-            row.operator("wm.url_open", text="Repository").url = "https://github.com/kract/blender-addons/tree/main/gzr-custom-keymap"
+            row.operator("wm.url_open", text="Repository").url = "https://github.com/kract/blender-addons/tree/main/gzr-keymap"
 
-classes = (GZR_KEYMAP_AddonPreferences,)
+classes = (GZR_OT_noop, GZR_KEYMAP_AddonPreferences,)
 
 addon_keymaps = []
 
@@ -113,6 +122,10 @@ def register():
 
         # ビューをズーム
         kmi = km.keymap_items.new("view3d.zoom", type='RIGHTMOUSE', value="PRESS", alt=True)
+        addon_keymaps.append((km, kmi))
+
+        # Zキーに移動（transform.translate）を割り当て
+        kmi = km.keymap_items.new("transform.translate", type='Z', value="PRESS")
         addon_keymaps.append((km, kmi))
 
 def unregister():

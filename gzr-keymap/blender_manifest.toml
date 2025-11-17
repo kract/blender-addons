@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
-id = "gzr_custom_keymap"
-name = "GZR Custom Keymap"
+id = "gzr_keymap"
+name = "GZRKeymap"
 tagline = "Custom key maps for improved workflow"
 version = "1.0.0"
 type = "add-on"
@@ -13,7 +13,7 @@ license = ["SPDX:GPL-3.0-or-later"]
 
 blender_version_min = "4.2.0"
 
-website = "https://github.com/kract/blender-addons/tree/main/gzr-custom-keymap"
+website = "https://github.com/kract/blender-addons/tree/main/gzr-keymap"
 tags = ["3D View", "User Interface", "Keymap"]
 
 [permissions]

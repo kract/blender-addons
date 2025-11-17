@@ -1,4 +1,4 @@
-# GZR Custom Keymap
+# GZRKeymap
 
 A Blender add-on that provides custom keymaps for improved workflow efficiency.
 
@@ -21,7 +21,7 @@ A Blender add-on that provides custom keymaps for improved workflow efficiency.
 3. Click "Add Remote Repository"
 4. Enter the repository URL: `https://blender.kract.jp/api/v1/extensions/`
 5. Click "Add Repository"
-6. Browse and install "GZR Custom Keymap" from the repository
+6. Browse and install "GZRKeymap" from the repository
 
 ### Method 2: Drag and Drop (Blender 4.2+)
 
@@ -34,7 +34,7 @@ A Blender add-on that provides custom keymaps for improved workflow efficiency.
 1. Download the add-on files
 2. Go to `Edit > Preferences > Add-ons`
 3. Click `Install...` and select the ZIP file
-4. Enable the "GZR Custom Keymap" add-on
+4. Enable the "GZRKeymap" add-on
 
 ## Usage
 
@@ -50,7 +50,7 @@ Once installed and enabled, the following keymaps are active:
 ### Customizing Keymaps
 
 1. Go to `Edit > Preferences > Add-ons`
-2. Find "GZR Custom Keymap" in the list
+2. Find "GZRKeymap" in the list
 3. Click on the add-on name to expand preferences
 4. Select the "Keymap" tab
 5. View and modify keymaps as needed
