@@ -124,8 +124,12 @@ def register():
         kmi = km.keymap_items.new("view3d.zoom", type='RIGHTMOUSE', value="PRESS", alt=True)
         addon_keymaps.append((km, kmi))
 
-        # Zキーに移動（transform.translate）を割り当て
+        # Zキーに移動（transform.translate）を割り当て（Gキーの代わり）
         kmi = km.keymap_items.new("transform.translate", type='Z', value="PRESS")
+        addon_keymaps.append((km, kmi))
+        
+        # Gキーを無効化（移動をZキーのみで駆動するため）
+        kmi = km.keymap_items.new("gzr.noop", type='G', value="PRESS")
         addon_keymaps.append((km, kmi))
 
 def unregister():

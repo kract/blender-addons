@@ -1,0 +1,17 @@
+{
+  "name": "kract-blender-addons",
+  "description": "KRACT Blender Extensions Collection",
+  "private": true,
+  "scripts": {
+    "package": "npx kract@latest blender package",
+    "init": "npx kract@latest blender init",
+    "deploy": "npx kract@latest blender deploy"
+  },
+  "keywords": [
+    "blender",
+    "addon",
+    "extension"
+  ],
+  "author": "KRACT <developer@kract.jp>",
+  "license": "GPL-3.0-or-later"
+}
