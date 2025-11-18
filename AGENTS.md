@@ -178,3 +178,33 @@ When creating or updating README files:
 - After completing any code changes or feature implementations, automatically run `bun package`
 - This should be done as the final step in the implementation process
 - The command will package all addons in the repository, ensuring consistency across the entire collection
+
+## GZR Keymap Special Implementation
+
+**Important**: GZR Keymap addon has a special implementation method for Transform Modal Map keymap items.
+
+### Rules
+
+1. **Default Keymap Modification**: GZR Keymap modifies the default keymap (`keyconfigs.user`) instead of creating its own keymap items.
+
+2. **Transform Modal Map**: When implementing Transform Modal Map keymap items (such as AXIS_X, AXIS_Y, AXIS_Z), the addon:
+   - Retrieves the existing "Transform Modal Map" keymap from `keyconfigs.user`
+   - Removes existing entries to avoid duplicates
+   - Adds new keymap items directly to the existing keymap
+   - Does NOT add these items to `addon_keymaps` list (since they modify the default keymap, not addon-specific keymaps)
+
+3. **Why This Approach**: Transform Modal Map is a special modal keymap that requires modification of the default user keymap rather than creating addon-specific entries.
+
+4. **Unregister Behavior**: Since these items are not in `addon_keymaps`, they are not automatically removed during unregister. This is intentional as they modify the default keymap.
+
+### Implementation
+
+- Use `wm.keyconfigs.user` to access the default keymap
+- Find the existing "Transform Modal Map" keymap
+- Remove existing entries before adding new ones to avoid duplicates
+- Add keymap items directly without appending to `addon_keymaps`
+
+### Reference
+
+- [Blender Preferences Documentation](https://docs.blender.org/manual/ja/4.4/editors/preferences/index.html?utm_source=blender-4.4.3#bpy-types-preferences)
+- [Keymap Item Documentation](https://docs.blender.org/manual/ja/4.4/editors/preferences/keymap.html?utm_source=blender-4.4.3#bpy-types-keymapitem)

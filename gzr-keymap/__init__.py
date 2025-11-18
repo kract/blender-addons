@@ -456,8 +456,39 @@ def register():
     addon_keymaps.append((km, kmi))
 
     # Transform Modal Map
-    # Note: AXIS_*エントリは削除（動作しないため）
-    # PLANE_ZとTRANSLATEも削除（Transform Modal Mapは通常のキーマップアイテムとして登録できない可能性があるため）
+    # GZR Keymapに限り、デフォルトのキーマップ（keyconfigs.user）を書き換える形で実装
+    # 独自のキーマップを作成せず、既存のTransform Modal Mapにキーマップアイテムを追加
+    wm = bpy.context.window_manager
+    kc_user = wm.keyconfigs.user
+    
+    # 既存のTransform Modal Mapキーマップを取得
+    km_transform_modal = None
+    for existing_km in kc_user.keymaps:
+        if existing_km.name == "Transform Modal Map":
+            km_transform_modal = existing_km
+            break
+    
+    if km_transform_modal:
+        # 既存のAXIS_*エントリを削除（重複を避けるため）
+        items_to_remove = []
+        for kmi in km_transform_modal.keymap_items:
+            if kmi.idname in ["AXIS_X", "AXIS_Y", "AXIS_Z"]:
+                items_to_remove.append(kmi)
+        
+        for kmi in items_to_remove:
+            try:
+                km_transform_modal.keymap_items.remove(kmi)
+            except (KeyError, ReferenceError):
+                pass
+        
+        # AXIS_X: XキーでX軸に制約
+        kmi = km_transform_modal.keymap_items.new("AXIS_X", type='X', value="PRESS")
+        
+        # AXIS_Y: CキーでY軸に制約
+        kmi = km_transform_modal.keymap_items.new("AXIS_Y", type='C', value="PRESS")
+        
+        # AXIS_Z: ZキーでZ軸に制約
+        kmi = km_transform_modal.keymap_items.new("AXIS_Z", type='Z', value="PRESS")
 
 
 def unregister():
