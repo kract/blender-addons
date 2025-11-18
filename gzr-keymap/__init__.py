@@ -12,12 +12,6 @@ from bpy.props import EnumProperty, BoolProperty
 from bpy.types import AddonPreferences
 import rna_keymap_ui
 
-# Import keymap configuration
-try:
-    from . import GZR_Keymap
-except ImportError:
-    GZR_Keymap = None
-
 addon_keymaps = []
 
 
@@ -247,13 +241,6 @@ def register():
     """Register addon"""
     for cls in classes:
         bpy.utils.register_class(cls)
-    
-    # Apply exported keymap configuration
-    if GZR_Keymap:
-        try:
-            GZR_Keymap.apply_keymap()
-        except Exception as e:
-            print(f"GZR Keymap: Failed to apply keymap configuration: {e}")
 
     wm = bpy.context.window_manager
     kc = wm.keyconfigs.addon
