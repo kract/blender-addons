@@ -8,7 +8,7 @@ bl_info = {
 }
 
 import bpy
-from bpy.props import EnumProperty
+from bpy.props import EnumProperty, BoolProperty
 from bpy.types import AddonPreferences
 import rna_keymap_ui
 
@@ -27,6 +27,28 @@ class GZR_KEYMAP_AddonPreferences(AddonPreferences):
         default='KEYMAP'
     )
 
+    # Accordion expand states for each keymap section
+    show_3d_view: BoolProperty(
+        name="Show 3D View",
+        description="Show 3D View keymap items",
+        default=True
+    )
+    show_view2d: BoolProperty(
+        name="Show View2D",
+        description="Show View2D keymap items",
+        default=True
+    )
+    show_image: BoolProperty(
+        name="Show Image",
+        description="Show Image Editor keymap items",
+        default=True
+    )
+    show_mesh: BoolProperty(
+        name="Show Mesh",
+        description="Show Mesh keymap items",
+        default=True
+    )
+
     def draw(self, context):
         layout = self.layout
 
@@ -34,13 +56,11 @@ class GZR_KEYMAP_AddonPreferences(AddonPreferences):
         row.prop(self, "tab_addon_menu", expand=True)
 
         if self.tab_addon_menu == "KEYMAP":
-            box = layout.box()
-            col = box.column()
-            col.label(text="Keymap List:")
-
             wm = bpy.context.window_manager
             kc = wm.keyconfigs.user
-            old_km_name = ""
+
+            # Group keymap items by keymap name
+            keymap_groups = {}
             old_id_l = []
 
             for km_add, kmi_add in addon_keymaps:
@@ -57,14 +77,57 @@ class GZR_KEYMAP_AddonPreferences(AddonPreferences):
                             break
 
                 try:
-                    if not km.name == old_km_name:
-                        col.label(text=str(km.name), icon="DOT")
-                    col.context_pointer_set("keymap", km)
-                    rna_keymap_ui.draw_kmi([], kc, km, kmi, col, 0)
-                    col.separator()
-                    old_km_name = km.name
+                    km_name = km.name
+                    if km_name not in keymap_groups:
+                        keymap_groups[km_name] = []
+                    keymap_groups[km_name].append((km, kmi))
                 except:
                     pass
+
+            # Draw each keymap section in an accordion
+            for km_name, km_items in keymap_groups.items():
+                # Get the expand property based on keymap name
+                if km_name == "3D View":
+                    expand_prop = self.show_3d_view
+                    prop_name = "show_3d_view"
+                elif km_name == "View2D":
+                    expand_prop = self.show_view2d
+                    prop_name = "show_view2d"
+                elif km_name == "Image":
+                    expand_prop = self.show_image
+                    prop_name = "show_image"
+                elif km_name == "Mesh":
+                    expand_prop = self.show_mesh
+                    prop_name = "show_mesh"
+                else:
+                    expand_prop = True
+                    prop_name = None
+
+                # Create accordion
+                if prop_name:
+                    # Accordion header with toggle
+                    box = layout.box()
+                    col = box.column()
+                    row_header = col.row()
+                    row_header.alignment = 'LEFT'
+                    row_header.prop(self, prop_name, text=km_name, icon="TRIA_DOWN" if expand_prop else "TRIA_RIGHT", emboss=False)
+                    
+                    # Draw keymap items if expanded
+                    if expand_prop:
+                        col_inner = col.column()
+                        for km, kmi in km_items:
+                            col_inner.context_pointer_set("keymap", km)
+                            rna_keymap_ui.draw_kmi([], kc, km, kmi, col_inner, 0)
+                            col_inner.separator()
+                else:
+                    # Fallback for unknown keymaps
+                    box = layout.box()
+                    col = box.column()
+                    col.label(text=km_name, icon="DOT")
+                    for km, kmi in km_items:
+                        col.context_pointer_set("keymap", km)
+                        rna_keymap_ui.draw_kmi([], kc, km, kmi, col, 0)
+                        col.separator()
 
 
 classes = (GZR_KEYMAP_AddonPreferences,)
