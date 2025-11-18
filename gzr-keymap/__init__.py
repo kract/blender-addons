@@ -455,45 +455,6 @@ def register():
     kmi = km.keymap_items.new("outliner.item_drag_drop", type='Z', value="CLICK")
     addon_keymaps.append((km, kmi))
 
-    # Transform Modal Map
-    # GZR Keymapに限り、デフォルトのキーマップ（keyconfigs.user）を書き換える形で実装
-    # AXIS_YをCキーに、PLANE_YをShift+Cに変更
-    wm = bpy.context.window_manager
-    kc_user = wm.keyconfigs.user
-    
-    # 既存のTransform Modal Mapキーマップを取得
-    km_transform_modal = None
-    for existing_km in kc_user.keymaps:
-        if existing_km.name == "Transform Modal Map":
-            km_transform_modal = existing_km
-            break
-    
-    if km_transform_modal:
-        # 既存のAXIS_Yエントリを検索して変更（Yキー → Cキー）
-        for kmi in km_transform_modal.keymap_items:
-            if kmi.idname == "AXIS_Y":
-                # YキーのエントリをCキーに変更
-                if kmi.type == 'Y' and not kmi.shift and not kmi.ctrl and not kmi.alt:
-                    kmi.type = 'C'
-                    kmi.value = 'PRESS'
-                    kmi.shift = False
-                    kmi.ctrl = False
-                    kmi.alt = False
-                    kmi.oskey = False
-                    break
-        
-        # 既存のPLANE_Yエントリを検索して変更（Shift+Y → Shift+C）
-        for kmi in km_transform_modal.keymap_items:
-            if kmi.idname == "PLANE_Y":
-                # Shift+YのエントリをShift+Cに変更
-                if kmi.type == 'Y' and kmi.shift and not kmi.ctrl and not kmi.alt:
-                    kmi.type = 'C'
-                    kmi.value = 'PRESS'
-                    kmi.shift = True
-                    kmi.ctrl = False
-                    kmi.alt = False
-                    kmi.oskey = False
-                    break
 
 
 def unregister():
