@@ -113,11 +113,6 @@ class GZR_KEYMAP_AddonPreferences(AddonPreferences):
         description="Show Outliner keymap items",
         default=False
     )
-    show_transform_modal_map: BoolProperty(
-        name="Show Transform Modal Map",
-        description="Show Transform Modal Map keymap items",
-        default=False
-    )
 
     def draw(self, context):
         layout = self.layout
@@ -208,9 +203,6 @@ class GZR_KEYMAP_AddonPreferences(AddonPreferences):
                 elif km_name == "Outliner":
                     expand_prop = self.show_outliner
                     prop_name = "show_outliner"
-                elif km_name == "Transform Modal Map":
-                    expand_prop = self.show_transform_modal_map
-                    prop_name = "show_transform_modal_map"
                 else:
                     expand_prop = True
                     prop_name = None
@@ -464,28 +456,8 @@ def register():
     addon_keymaps.append((km, kmi))
 
     # Transform Modal Map
-    # addonキーコンフィグに追加（アドオンのキーマップアイテムは通常addonに追加）
-    km = kc.keymaps.new(name="Transform Modal Map", space_type="EMPTY")
-    
-    # AXIS_X
-    kmi = km.keymap_items.new("AXIS_X", type='X', value="PRESS")
-    addon_keymaps.append((km, kmi))
-
-    # AXIS_Y
-    kmi = km.keymap_items.new("AXIS_Y", type='C', value="PRESS")
-    addon_keymaps.append((km, kmi))
-
-    # AXIS_Z
-    kmi = km.keymap_items.new("AXIS_Z", type='Z', value="PRESS")
-    addon_keymaps.append((km, kmi))
-
-    # PLANE_Z
-    kmi = km.keymap_items.new("PLANE_Z", type='Z', value="PRESS", shift=True)
-    addon_keymaps.append((km, kmi))
-
-    # TRANSLATE
-    kmi = km.keymap_items.new("TRANSLATE", type='Z', value="PRESS")
-    addon_keymaps.append((km, kmi))
+    # Note: AXIS_*エントリは削除（動作しないため）
+    # PLANE_ZとTRANSLATEも削除（Transform Modal Mapは通常のキーマップアイテムとして登録できない可能性があるため）
 
 
 def unregister():
