@@ -48,6 +48,76 @@ class GZR_KEYMAP_AddonPreferences(AddonPreferences):
         description="Show Mesh keymap items",
         default=False
     )
+    show_object_mode: BoolProperty(
+        name="Show Object Mode",
+        description="Show Object Mode keymap items",
+        default=False
+    )
+    show_armature: BoolProperty(
+        name="Show Armature",
+        description="Show Armature keymap items",
+        default=False
+    )
+    show_pose: BoolProperty(
+        name="Show Pose",
+        description="Show Pose keymap items",
+        default=False
+    )
+    show_animation: BoolProperty(
+        name="Show Animation",
+        description="Show Animation keymap items",
+        default=False
+    )
+    show_graph_editor: BoolProperty(
+        name="Show Graph Editor",
+        description="Show Graph Editor keymap items",
+        default=False
+    )
+    show_uv_editor: BoolProperty(
+        name="Show UV Editor",
+        description="Show UV Editor keymap items",
+        default=False
+    )
+    show_node_editor: BoolProperty(
+        name="Show Node Editor",
+        description="Show Node Editor keymap items",
+        default=False
+    )
+    show_sequencer: BoolProperty(
+        name="Show Sequencer",
+        description="Show Sequencer keymap items",
+        default=False
+    )
+    show_timeline: BoolProperty(
+        name="Show Timeline",
+        description="Show Timeline keymap items",
+        default=False
+    )
+    show_grease_pencil: BoolProperty(
+        name="Show Grease Pencil",
+        description="Show Grease Pencil keymap items",
+        default=False
+    )
+    show_sculpt: BoolProperty(
+        name="Show Sculpt",
+        description="Show Sculpt keymap items",
+        default=False
+    )
+    show_weight_paint: BoolProperty(
+        name="Show Weight Paint",
+        description="Show Weight Paint keymap items",
+        default=False
+    )
+    show_outliner: BoolProperty(
+        name="Show Outliner",
+        description="Show Outliner keymap items",
+        default=False
+    )
+    show_transform_modal_map: BoolProperty(
+        name="Show Transform Modal Map",
+        description="Show Transform Modal Map keymap items",
+        default=False
+    )
 
     def draw(self, context):
         layout = self.layout
@@ -99,6 +169,48 @@ class GZR_KEYMAP_AddonPreferences(AddonPreferences):
                 elif km_name == "Mesh":
                     expand_prop = self.show_mesh
                     prop_name = "show_mesh"
+                elif km_name == "Object Mode":
+                    expand_prop = self.show_object_mode
+                    prop_name = "show_object_mode"
+                elif km_name == "Armature":
+                    expand_prop = self.show_armature
+                    prop_name = "show_armature"
+                elif km_name == "Pose":
+                    expand_prop = self.show_pose
+                    prop_name = "show_pose"
+                elif km_name == "Animation":
+                    expand_prop = self.show_animation
+                    prop_name = "show_animation"
+                elif km_name == "Graph Editor":
+                    expand_prop = self.show_graph_editor
+                    prop_name = "show_graph_editor"
+                elif km_name == "UV Editor":
+                    expand_prop = self.show_uv_editor
+                    prop_name = "show_uv_editor"
+                elif km_name == "Node Editor":
+                    expand_prop = self.show_node_editor
+                    prop_name = "show_node_editor"
+                elif km_name == "Sequencer":
+                    expand_prop = self.show_sequencer
+                    prop_name = "show_sequencer"
+                elif km_name == "Timeline":
+                    expand_prop = self.show_timeline
+                    prop_name = "show_timeline"
+                elif km_name == "Grease Pencil":
+                    expand_prop = self.show_grease_pencil
+                    prop_name = "show_grease_pencil"
+                elif km_name == "Sculpt":
+                    expand_prop = self.show_sculpt
+                    prop_name = "show_sculpt"
+                elif km_name == "Weight Paint":
+                    expand_prop = self.show_weight_paint
+                    prop_name = "show_weight_paint"
+                elif km_name == "Outliner":
+                    expand_prop = self.show_outliner
+                    prop_name = "show_outliner"
+                elif km_name == "Transform Modal Map":
+                    expand_prop = self.show_transform_modal_map
+                    prop_name = "show_transform_modal_map"
                 else:
                     expand_prop = True
                     prop_name = None
@@ -159,6 +271,26 @@ def register():
     kmi = km.keymap_items.new("view3d.zoom", type='RIGHTMOUSE', value="PRESS", shift=True)
     addon_keymaps.append((km, kmi))
 
+    # Zキーエントリ（SAMPLE_KEYMAP.pyから移植）
+    # Shading pie menu
+    kmi = km.keymap_items.new("wm.call_menu_pie", type='Z', value="PRESS")
+    kmi.properties.name = 'VIEW3D_MT_shading_pie'
+    addon_keymaps.append((km, kmi))
+
+    # Toggle shading (Wireframe)
+    kmi = km.keymap_items.new("view3d.toggle_shading", type='Z', value="PRESS", shift=True)
+    kmi.properties.type = 'WIREFRAME'
+    addon_keymaps.append((km, kmi))
+
+    # Toggle X-ray
+    kmi = km.keymap_items.new("view3d.toggle_xray", type='Z', value="PRESS", alt=True)
+    addon_keymaps.append((km, kmi))
+
+    # Toggle overlays
+    kmi = km.keymap_items.new("wm.context_toggle", type='Z', value="PRESS", shift=True, alt=True)
+    kmi.properties.data_path = 'space_data.overlay.show_overlays'
+    addon_keymaps.append((km, kmi))
+
     # 2D View
     km = kc.keymaps.new(name="View2D", space_type="EMPTY")
     
@@ -205,6 +337,153 @@ def register():
     # 選択モード切り替え（面モード）- Alt + 左ドラッグ（右方向）
     kmi = km.keymap_items.new("mesh.select_mode", type='LEFTMOUSE', value="CLICK_DRAG", alt=True, direction='EAST')
     kmi.properties.type = 'FACE'
+    addon_keymaps.append((km, kmi))
+
+    # Object Mode
+    km = kc.keymaps.new(name="Object Mode", space_type="EMPTY")
+    
+    # Transform translate
+    kmi = km.keymap_items.new("transform.translate", type='Z', value="PRESS")
+    addon_keymaps.append((km, kmi))
+
+    # Location clear
+    kmi = km.keymap_items.new("object.location_clear", type='Z', value="PRESS", ctrl=True, alt=True)
+    kmi.properties.clear_delta = False
+    addon_keymaps.append((km, kmi))
+
+    # Armature
+    km = kc.keymaps.new(name="Armature", space_type="EMPTY")
+    
+    # Transform translate
+    kmi = km.keymap_items.new("transform.translate", type='Z', value="PRESS")
+    addon_keymaps.append((km, kmi))
+
+    # Pose
+    km = kc.keymaps.new(name="Pose", space_type="EMPTY")
+    
+    # Location clear
+    kmi = km.keymap_items.new("pose.loc_clear", type='Z', value="PRESS", ctrl=True, alt=True)
+    addon_keymaps.append((km, kmi))
+
+    # Animation
+    km = kc.keymaps.new(name="Animation", space_type="EMPTY")
+    
+    # Transform transform (TIME_TRANSLATE)
+    kmi = km.keymap_items.new("transform.transform", type='Z', value="PRESS")
+    kmi.properties.mode = 'TIME_TRANSLATE'
+    addon_keymaps.append((km, kmi))
+
+    # Graph Editor
+    km = kc.keymaps.new(name="Graph Editor", space_type="GRAPH_EDITOR")
+    
+    # Transform translate
+    kmi = km.keymap_items.new("transform.translate", type='Z', value="PRESS")
+    addon_keymaps.append((km, kmi))
+
+    # UV Editor
+    km = kc.keymaps.new(name="UV Editor", space_type="EMPTY")
+    
+    # Transform translate
+    kmi = km.keymap_items.new("transform.translate", type='Z', value="PRESS")
+    addon_keymaps.append((km, kmi))
+
+    # Node Editor
+    km = kc.keymaps.new(name="Node Editor", space_type="NODE_EDITOR")
+    
+    # Render changed
+    kmi = km.keymap_items.new("node.render_changed", type='Z', value="PRESS")
+    addon_keymaps.append((km, kmi))
+
+    # Translate attach
+    kmi = km.keymap_items.new("node.translate_attach", type='Z', value="PRESS")
+    addon_keymaps.append((km, kmi))
+
+    # Transform translate
+    kmi = km.keymap_items.new("transform.translate", type='Z', value="PRESS")
+    kmi.properties.view2d_edge_pan = True
+    addon_keymaps.append((km, kmi))
+
+    # Toggle overlays
+    kmi = km.keymap_items.new("wm.context_toggle", type='Z', value="PRESS", shift=True, alt=True)
+    kmi.properties.data_path = 'space_data.overlay.show_overlays'
+    addon_keymaps.append((km, kmi))
+
+    # Sequencer
+    km = kc.keymaps.new(name="Sequencer", space_type="SEQUENCE_EDITOR")
+    
+    # Transform seq slide
+    kmi = km.keymap_items.new("transform.seq_slide", type='Z', value="PRESS")
+    kmi.properties.view2d_edge_pan = True
+    addon_keymaps.append((km, kmi))
+
+    # Toggle overlays
+    kmi = km.keymap_items.new("wm.context_toggle", type='Z', value="PRESS", shift=True, alt=True)
+    kmi.properties.data_path = 'space_data.show_overlays'
+    addon_keymaps.append((km, kmi))
+
+    # Replace source preserve timing
+    kmi = km.keymap_items.new("sequencer.replace_source_preserve_timing", type='Z', value="PRESS", shift=True, ctrl=True, alt=True)
+    addon_keymaps.append((km, kmi))
+
+    # Timeline
+    km = kc.keymaps.new(name="Timeline", space_type="DOPESHEET_EDITOR")
+    
+    # Marker move
+    kmi = km.keymap_items.new("marker.move", type='Z', value="PRESS")
+    addon_keymaps.append((km, kmi))
+
+    # Grease Pencil
+    # Note: brush.asset_activateエントリは削除（アセットが存在しない場合にエラーが発生するため）
+    # km = kc.keymaps.new(name="Grease Pencil", space_type="EMPTY")
+    # kmi = km.keymap_items.new("brush.asset_activate", type='Z', value="PRESS", repeat=True)
+    # kmi.properties.asset_library_type = 'CUSTOM'
+    # kmi.properties.asset_library_identifier = 'User Library'
+    # addon_keymaps.append((km, kmi))
+
+    # Sculpt
+    # Note: brush.asset_activateエントリは削除（アセットが存在しない場合にエラーが発生するため）
+    # km = kc.keymaps.new(name="Sculpt", space_type="EMPTY")
+    # kmi = km.keymap_items.new("brush.asset_activate", type='Z', value="PRESS", repeat=True)
+    # kmi.properties.asset_library_type = 'ESSENTIALS'
+    # kmi.properties.asset_library_identifier = ''
+    # addon_keymaps.append((km, kmi))
+
+    # Weight Paint
+    km = kc.keymaps.new(name="Weight Paint", space_type="EMPTY")
+    
+    # Toggle overlays
+    kmi = km.keymap_items.new("wm.context_toggle", type='Z', value="PRESS", shift=True, alt=True)
+    kmi.properties.data_path = 'space_data.overlay.show_overlays'
+    addon_keymaps.append((km, kmi))
+
+    # Outliner
+    km = kc.keymaps.new(name="Outliner", space_type="OUTLINER")
+    
+    # Item drag drop
+    kmi = km.keymap_items.new("outliner.item_drag_drop", type='Z', value="CLICK")
+    addon_keymaps.append((km, kmi))
+
+    # Transform Modal Map
+    km = kc.keymaps.new(name="Transform Modal Map", space_type="EMPTY")
+    
+    # AXIS_X
+    kmi = km.keymap_items.new("AXIS_X", type='X', value="PRESS")
+    addon_keymaps.append((km, kmi))
+
+    # AXIS_Y
+    kmi = km.keymap_items.new("AXIS_Y", type='C', value="PRESS")
+    addon_keymaps.append((km, kmi))
+
+    # AXIS_Z
+    kmi = km.keymap_items.new("AXIS_Z", type='Z', value="PRESS")
+    addon_keymaps.append((km, kmi))
+
+    # PLANE_Z
+    kmi = km.keymap_items.new("PLANE_Z", type='Z', value="PRESS", shift=True)
+    addon_keymaps.append((km, kmi))
+
+    # TRANSLATE
+    kmi = km.keymap_items.new("TRANSLATE", type='Z', value="PRESS")
     addon_keymaps.append((km, kmi))
 
 
