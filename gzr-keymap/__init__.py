@@ -126,6 +126,24 @@ def register():
     kmi = km.keymap_items.new("image.view_zoom", type='RIGHTMOUSE', value="PRESS", alt=True)
     addon_keymaps.append((km, kmi))
 
+    # Mesh (Edit Mode)
+    km = kc.keymaps.new(name="Mesh", space_type="EMPTY")
+    
+    # 選択モード切り替え（頂点モード）- Alt + 左ドラッグ（左方向）
+    kmi = km.keymap_items.new("mesh.select_mode", type='LEFTMOUSE', value="CLICK_DRAG", alt=True, direction='WEST')
+    kmi.properties.type = 'VERT'
+    addon_keymaps.append((km, kmi))
+
+    # 選択モード切り替え（辺モード）- Alt + 左ドラッグ（下方向）
+    kmi = km.keymap_items.new("mesh.select_mode", type='LEFTMOUSE', value="CLICK_DRAG", alt=True, direction='SOUTH')
+    kmi.properties.type = 'EDGE'
+    addon_keymaps.append((km, kmi))
+
+    # 選択モード切り替え（面モード）- Alt + 左ドラッグ（右方向）
+    kmi = km.keymap_items.new("mesh.select_mode", type='LEFTMOUSE', value="CLICK_DRAG", alt=True, direction='EAST')
+    kmi.properties.type = 'FACE'
+    addon_keymaps.append((km, kmi))
+
 
 def unregister():
     """Unregister addon"""

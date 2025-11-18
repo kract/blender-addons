@@ -147,3 +147,34 @@ When creating or updating README files:
 - Always write in English
 - If translating from another language, ensure proper English grammar and clarity
 - Use clear, concise language suitable for technical documentation
+
+## Post-Implementation Packaging
+
+**Important**: After implementing any feature or making changes to addon code, the package command must be executed automatically.
+
+### Rules
+
+1. **Automatic Execution**: After completing any feature implementation, bug fix, or code modification, automatically execute `bun package` command.
+
+2. **When to Execute**: The package command must be run after:
+   - Adding new features to an addon
+   - Fixing bugs in addon code
+   - Updating addon functionality
+   - Making any changes that affect the addon's distributable package
+
+3. **Command**: Execute `bun package` (which runs `npx kract@latest blender package`) to create distribution-ready packages for all extensions.
+
+4. **No Manual Intervention**: The packaging should happen automatically as part of the implementation workflow, without requiring explicit user request.
+
+### Rationale
+
+- Ensures that all changes are immediately packaged and ready for distribution
+- Maintains consistency between code changes and distributable packages
+- Prevents forgetting to package after implementation
+- Keeps the `zip/` directory up-to-date with the latest code changes
+
+### Implementation
+
+- After completing any code changes or feature implementations, automatically run `bun package`
+- This should be done as the final step in the implementation process
+- The command will package all addons in the repository, ensuring consistency across the entire collection
