@@ -31,22 +31,22 @@ class GZR_KEYMAP_AddonPreferences(AddonPreferences):
     show_3d_view: BoolProperty(
         name="Show 3D View",
         description="Show 3D View keymap items",
-        default=True
+        default=False
     )
     show_view2d: BoolProperty(
         name="Show View2D",
         description="Show View2D keymap items",
-        default=True
+        default=False
     )
     show_image: BoolProperty(
         name="Show Image",
         description="Show Image Editor keymap items",
-        default=True
+        default=False
     )
     show_mesh: BoolProperty(
         name="Show Mesh",
         description="Show Mesh keymap items",
-        default=True
+        default=False
     )
 
     def draw(self, context):
