@@ -464,6 +464,7 @@ def register():
     addon_keymaps.append((km, kmi))
 
     # Transform Modal Map
+    # addonキーコンフィグに追加（アドオンのキーマップアイテムは通常addonに追加）
     km = kc.keymaps.new(name="Transform Modal Map", space_type="EMPTY")
     
     # AXIS_X
