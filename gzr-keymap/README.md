@@ -7,25 +7,32 @@ A Blender add-on that provides custom keymap configurations for viewport navigat
 - **3D Viewport Navigation**: Custom mouse controls for rotating, panning, and zooming in 3D View
 - **2D View Navigation**: Custom mouse controls for panning and zooming in 2D View
 - **Image Editor Navigation**: Custom mouse controls for panning and zooming in Image Editor
-- **Alt Key Modifier**: All navigation controls use Alt key modifier for intuitive operation
+- **Edit Mode Selection Mode Switching**: Quick selection mode switching using Alt + mouse drag in Edit Mode
+- **Shift Key Modifier**: Navigation controls use Shift key modifier to avoid conflicts with selection mode switching
 
 ## Keymap Configuration
 
 ### 3D View
 
-- **Rotate View**: `Alt + Left Mouse Button`
-- **Pan View**: `Alt + Middle Mouse Button`
-- **Zoom View**: `Alt + Right Mouse Button`
+- **Rotate View**: `Shift + Left Mouse Button`
+- **Pan View**: `Shift + Middle Mouse Button`
+- **Zoom View**: `Shift + Right Mouse Button`
 
 ### 2D View
 
-- **Pan View**: `Alt + Left Mouse Button` or `Alt + Middle Mouse Button`
-- **Zoom View**: `Alt + Right Mouse Button`
+- **Pan View**: `Shift + Left Mouse Button` or `Shift + Middle Mouse Button`
+- **Zoom View**: `Shift + Right Mouse Button`
 
 ### Image Editor
 
-- **Pan View**: `Alt + Left Mouse Button` or `Alt + Middle Mouse Button`
-- **Zoom View**: `Alt + Right Mouse Button`
+- **Pan View**: `Shift + Left Mouse Button` or `Shift + Middle Mouse Button`
+- **Zoom View**: `Shift + Right Mouse Button`
+
+### Mesh (Edit Mode)
+
+- **Vertex Selection Mode**: `Alt + Left Mouse Drag (West/Left)`
+- **Edge Selection Mode**: `Alt + Left Mouse Drag (South/Down)`
+- **Face Selection Mode**: `Alt + Left Mouse Drag (East/Right)`
 
 ## Installation
 
@@ -53,11 +60,15 @@ A Blender add-on that provides custom keymap configurations for viewport navigat
 
 ## Usage
 
-After installation, the custom keymap will be automatically active. Use the Alt key modifier with mouse buttons to navigate:
+After installation, the custom keymap will be automatically active:
 
-- In **3D Viewport**: Use Alt + mouse buttons to rotate, pan, and zoom
-- In **2D View**: Use Alt + mouse buttons to pan and zoom
-- In **Image Editor**: Use Alt + mouse buttons to pan and zoom
+- In **3D Viewport**: Use `Shift + mouse buttons` to rotate, pan, and zoom
+- In **2D View**: Use `Shift + mouse buttons` to pan and zoom
+- In **Image Editor**: Use `Shift + mouse buttons` to pan and zoom
+- In **Edit Mode**: Use `Alt + Left Mouse Drag` in different directions to switch selection modes:
+  - Drag left → Vertex selection mode
+  - Drag down → Edge selection mode
+  - Drag right → Face selection mode
 
 ## Compatibility
 
