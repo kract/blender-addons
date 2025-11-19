@@ -9,7 +9,7 @@ from typing import Set, List
 bl_info = {
     "name": "SVG Importer Plus",
     "author": "KRACT", 
-    "version": (1, 0, 1),
+    "version": (1, 0, 2),
     "blender": (4, 2, 0),
     "description": "Enhanced SVG import with automatic mesh conversion and origin centering",
     "location": "File > Import > SVG Importer Plus (.svg)",
@@ -215,6 +215,16 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
         layout.prop(self, "center_origin")
 
 
+class SVG_FH_import_plus(bpy.types.FileHandler):
+    bl_idname = "SVG_FH_import_plus"
+    bl_label = "SVG Importer Plus"
+    bl_import_operator = "import_mesh.svg_plus"
+    bl_file_extensions = ".svg"
+
+    @classmethod
+    def poll_drop(cls, context):
+        return (context.area and context.area.type == 'VIEW_3D')
+
 def menu_func_import(self, context):
     self.layout.operator(IMPORT_OT_svg_plus.bl_idname, text=_("SVG Importer Plus (.svg)"))
 
@@ -273,6 +283,7 @@ class SVGTranslations:
 def register():
     """アドオン登録"""
     bpy.utils.register_class(IMPORT_OT_svg_plus)
+    bpy.utils.register_class(SVG_FH_import_plus)
     bpy.types.TOPBAR_MT_file_import.append(menu_func_import)
     SVGTranslations.register_translations(__name__)
 
@@ -290,6 +301,7 @@ def unregister():
     # Safely unregister class
     try:
         bpy.utils.unregister_class(IMPORT_OT_svg_plus)
+        bpy.utils.unregister_class(SVG_FH_import_plus)
     except RuntimeError:
         pass  # Already unregistered
 
