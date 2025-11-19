@@ -51,11 +51,13 @@ class SVGMaterialManager:
 class SVGPostProcessor:
     """Handles post-processing operations for imported SVG objects"""
     
-    def __init__(self, convert_to_mesh: bool = True, center_origin: bool = True):
+    def __init__(self, convert_to_mesh: bool = True, center_origin: bool = True, rotate_x_90: bool = True):
         self.convert_to_mesh = convert_to_mesh
         self.center_origin = center_origin
+        self.rotate_x_90 = rotate_x_90
         self.converted_count = 0
         self.centered_count = 0
+        self.rotated_count = 0
     
     def process_object(self, obj: bpy.types.Object) -> None:
         """Process a single object with mesh conversion and origin centering"""
@@ -68,6 +70,9 @@ class SVGPostProcessor:
             
             if self.center_origin:
                 self._center_origin(obj)
+            
+            if self.rotate_x_90:
+                self._rotate_x_90(obj)
         
         finally:
             obj.select_set(False)
@@ -88,9 +93,18 @@ class SVGPostProcessor:
         except Exception as e:
             raise RuntimeError(f"Failed to center origin for {obj.name}: {str(e)}")
     
+    def _rotate_x_90(self, obj: bpy.types.Object) -> None:
+        """Rotate object 90 degrees on X axis"""
+        try:
+            import math
+            obj.rotation_euler[0] += math.radians(90)
+            self.rotated_count += 1
+        except Exception as e:
+            raise RuntimeError(f"Failed to rotate {obj.name}: {str(e)}")
+    
     def get_statistics(self) -> tuple:
         """Get processing statistics"""
-        return self.converted_count, self.centered_count
+        return self.converted_count, self.centered_count, self.rotated_count
 
 class IMPORT_OT_svg_plus(Operator, ImportHelper):
     """Import SVG with automatic mesh conversion and origin centering"""
@@ -111,14 +125,31 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
         default=True,
     )
 
+    join_objects: BoolProperty(
+        name="Join Objects",
+        description="Join all imported objects into one",
+        default=False,
+    )
+
     center_origin: BoolProperty(
         name="Center Origin",
         description="Move origin to geometry center",
         default=True,
     )
 
+    rotate_x_90: BoolProperty(
+        name="Rotate X 90°",
+        description="Rotate imported objects 90 degrees on X axis",
+        default=True,
+    )
+
+    is_menu: BoolProperty(
+        options={'HIDDEN', 'SKIP_SAVE'},
+        default=False,
+    )
+
     def invoke(self, context, event):
-        if self.filepath and os.path.isfile(self.filepath) and self.filepath.lower().endswith('.svg'):
+        if not self.is_menu and self.filepath and os.path.isfile(self.filepath) and self.filepath.lower().endswith('.svg'):
             return self.execute(context)
         return super().invoke(context, event)
 
@@ -182,8 +213,11 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
     def _process_imported_objects(self, new_objects: List[bpy.types.Object]) -> None:
         """Process all imported objects with material cleanup and post-processing"""
         SVGMaterialManager.remove_svg_materials(new_objects)
+
+        if self.join_objects and len(new_objects) > 1:
+            new_objects = self._join_objects(new_objects)
         
-        processor = SVGPostProcessor(self.convert_to_mesh, self.center_origin)
+        processor = SVGPostProcessor(self.convert_to_mesh, self.center_origin, self.rotate_x_90)
         
         for obj in new_objects:
             try:
@@ -191,7 +225,7 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
             except RuntimeError as e:
                 self.report({'WARNING'}, str(e))
         
-        self.converted_count, self.centered_count = processor.get_statistics()
+        self.converted_count, self.centered_count, self.rotated_count = processor.get_statistics()
     
     def _report_results(self, new_objects: List[bpy.types.Object]) -> None:
         """Generate and report import results"""
@@ -204,7 +238,32 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
         if self.center_origin and self.centered_count > 0:
             messages.append(f"centered {self.centered_count} origins")
         
+        if self.rotate_x_90 and self.rotated_count > 0:
+            messages.append(f"rotated {self.rotated_count} objects")
+        
         self.report({'INFO'}, _(", ").join(messages))
+
+    def _join_objects(self, objects: List[bpy.types.Object]) -> List[bpy.types.Object]:
+        """Join multiple objects into one"""
+        if not objects:
+            return []
+            
+        # Deselect all
+        bpy.ops.object.select_all(action='DESELECT')
+        
+        # Select all objects to join
+        for obj in objects:
+            obj.select_set(True)
+            
+        # Set active object (last one)
+        bpy.context.view_layer.objects.active = objects[-1]
+        
+        try:
+            bpy.ops.object.join()
+            return [bpy.context.view_layer.objects.active]
+        except Exception as e:
+            self.report({'WARNING'}, f"Failed to join objects: {str(e)}")
+            return objects
 
 
     def draw(self, context):
@@ -216,8 +275,10 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
         layout.separator()
         layout.label(text=_("Post-Processing Options:"))
         
+        layout.prop(self, "join_objects")
         layout.prop(self, "convert_to_mesh")
         layout.prop(self, "center_origin")
+        layout.prop(self, "rotate_x_90")
 
 
 class SVG_FH_import_plus(bpy.types.FileHandler):
@@ -231,7 +292,8 @@ class SVG_FH_import_plus(bpy.types.FileHandler):
         return (context.area and context.area.type == 'VIEW_3D')
 
 def menu_func_import(self, context):
-    self.layout.operator(IMPORT_OT_svg_plus.bl_idname, text=_("SVG Importer Plus (.svg)"))
+    op = self.layout.operator(IMPORT_OT_svg_plus.bl_idname, text=_("SVG Importer Plus (.svg)"))
+    op.is_menu = True
 
 
 class SVGTranslations:
@@ -250,6 +312,11 @@ class SVGTranslations:
             ("*", "Automatically convert curves to mesh"): "カーブを自動的にメッシュに変換",
             ("*", "Center Origin"): "原点を中央に",
             ("*", "Move origin to geometry center"): "原点をジオメトリの中心に移動",
+            ("*", "Rotate X 90°"): "X軸90度回転",
+            ("*", "Rotate imported objects 90 degrees on X axis"): "インポートしたオブジェクトをX軸で90度回転",
+            
+            ("*", "Join Objects"): "オブジェクトを結合",
+            ("*", "Join all imported objects into one"): "インポートしたすべてのオブジェクトをひとつに結合",
             
             # UI labels
             ("*", "Post-Processing Options:"): "後処理オプション:",
