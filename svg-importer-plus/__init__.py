@@ -51,13 +51,11 @@ class SVGMaterialManager:
 class SVGPostProcessor:
     """Handles post-processing operations for imported SVG objects"""
     
-    def __init__(self, convert_to_mesh: bool = True, center_origin: bool = True, rotate_x_90: bool = True):
+    def __init__(self, convert_to_mesh: bool = True, center_origin: bool = True):
         self.convert_to_mesh = convert_to_mesh
         self.center_origin = center_origin
-        self.rotate_x_90 = rotate_x_90
         self.converted_count = 0
         self.centered_count = 0
-        self.rotated_count = 0
     
     def process_object(self, obj: bpy.types.Object) -> None:
         """Process a single object with mesh conversion and origin centering"""
@@ -70,9 +68,6 @@ class SVGPostProcessor:
             
             if self.center_origin:
                 self._center_origin(obj)
-            
-            if self.rotate_x_90:
-                self._rotate_x_90(obj)
         
         finally:
             obj.select_set(False)
@@ -93,18 +88,11 @@ class SVGPostProcessor:
         except Exception as e:
             raise RuntimeError(f"Failed to center origin for {obj.name}: {str(e)}")
     
-    def _rotate_x_90(self, obj: bpy.types.Object) -> None:
-        """Rotate object 90 degrees on X axis"""
-        try:
-            import math
-            obj.rotation_euler[0] += math.radians(90)
-            self.rotated_count += 1
-        except Exception as e:
-            raise RuntimeError(f"Failed to rotate {obj.name}: {str(e)}")
+
     
     def get_statistics(self) -> tuple:
         """Get processing statistics"""
-        return self.converted_count, self.centered_count, self.rotated_count
+        return self.converted_count, self.centered_count
 
 class IMPORT_OT_svg_plus(Operator, ImportHelper):
     """Import SVG with automatic mesh conversion and origin centering"""
@@ -137,11 +125,7 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
         default=True,
     )
 
-    rotate_x_90: BoolProperty(
-        name="Rotate X 90°",
-        description="Rotate imported objects 90 degrees on X axis",
-        default=True,
-    )
+
 
     is_menu: BoolProperty(
         options={'HIDDEN', 'SKIP_SAVE'},
@@ -217,7 +201,7 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
         if self.join_objects and len(new_objects) > 1:
             new_objects = self._join_objects(new_objects)
         
-        processor = SVGPostProcessor(self.convert_to_mesh, self.center_origin, self.rotate_x_90)
+        processor = SVGPostProcessor(self.convert_to_mesh, self.center_origin)
         
         for obj in new_objects:
             try:
@@ -225,7 +209,7 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
             except RuntimeError as e:
                 self.report({'WARNING'}, str(e))
         
-        self.converted_count, self.centered_count, self.rotated_count = processor.get_statistics()
+        self.converted_count, self.centered_count = processor.get_statistics()
     
     def _report_results(self, new_objects: List[bpy.types.Object]) -> None:
         """Generate and report import results"""
@@ -238,8 +222,7 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
         if self.center_origin and self.centered_count > 0:
             messages.append(f"centered {self.centered_count} origins")
         
-        if self.rotate_x_90 and self.rotated_count > 0:
-            messages.append(f"rotated {self.rotated_count} objects")
+
         
         self.report({'INFO'}, _(", ").join(messages))
 
@@ -278,7 +261,6 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
         layout.prop(self, "join_objects")
         layout.prop(self, "convert_to_mesh")
         layout.prop(self, "center_origin")
-        layout.prop(self, "rotate_x_90")
 
 
 class SVG_FH_import_plus(bpy.types.FileHandler):
@@ -312,8 +294,6 @@ class SVGTranslations:
             ("*", "Automatically convert curves to mesh"): "カーブを自動的にメッシュに変換",
             ("*", "Center Origin"): "原点を中央に",
             ("*", "Move origin to geometry center"): "原点をジオメトリの中心に移動",
-            ("*", "Rotate X 90°"): "X軸90度回転",
-            ("*", "Rotate imported objects 90 degrees on X axis"): "インポートしたオブジェクトをX軸で90度回転",
             
             ("*", "Join Objects"): "オブジェクトを結合",
             ("*", "Join all imported objects into one"): "インポートしたすべてのオブジェクトをひとつに結合",

@@ -1,4 +1,4 @@
-schema_version = "1.1.0"
+schema_version = "1.0.0"
 
 id = "svg_importer_plus"
 name = "SVG Importer Plus"
