@@ -5,6 +5,7 @@ from bpy.props import StringProperty, BoolProperty
 from bpy.types import Operator
 from bpy.app.translations import pgettext_iface as _
 from typing import Set, List
+import os
 
 bl_info = {
     "name": "SVG Importer Plus",
@@ -116,6 +117,11 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
         default=True,
     )
 
+    def invoke(self, context, event):
+        if self.filepath and os.path.isfile(self.filepath) and self.filepath.lower().endswith('.svg'):
+            return self.execute(context)
+        return super().invoke(context, event)
+
     def execute(self, context):
         if not self._validate_inputs():
             return {'CANCELLED'}
@@ -139,7 +145,6 @@ class IMPORT_OT_svg_plus(Operator, ImportHelper):
     
     def _validate_inputs(self) -> bool:
         """Validate input parameters before processing"""
-        import os
         
         if not self.filepath:
             self.report({'ERROR'}, "No file path specified")
