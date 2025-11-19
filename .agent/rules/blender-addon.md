@@ -6,13 +6,13 @@ trigger: always_on
 
 ## .idea Directory Usage Policy
 
-**Important**: Files within the `.idea/` directory may be used as implementation references, but must never be mentioned or documented in any repository files.
+**Important**: Files within the  directory may be used as implementation references, but must never be mentioned or documented in any repository files.
 
 ### Rules
 
-1. **Implementation Reference**: You may use files from the `.idea/` directory as implementation references when developing features.
+1. **Implementation Reference**: You may use files from the  directory as implementation references when developing features.
 
-2. **Strict Documentation Prohibition**: It is strictly forbidden to mention, reference, or document that any implementation was based on or inspired by files from the `.idea/` directory in:
+2. **Strict Documentation Prohibition**: It is strictly forbidden to mention, reference, or document that any implementation was based on or inspired by files from the  directory in:
 
    - README files (`.md`)
    - Documentation files (`.md`, `.txt`, etc.)
@@ -68,6 +68,8 @@ When working with this repository:
 ### Implementation
 
 - Update the `version` field in `bl_info` dictionary in the addon's `__init__.py` file
+- Update the `version` field in `blender_manifest.toml` file
+- **Both files must be updated to the same version number**
 - Ensure version numbers are non-negative integers without leading zeros
 - Reset lower version numbers when incrementing higher ones (e.g., when incrementing MINOR, reset PATCH to 0)
 
