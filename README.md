@@ -17,6 +17,12 @@ Get all extensions directly from our third-party Blender Extension Registry:
 
 ## 📦 Extensions Overview
 
+### ⌨️ GZR Keymap
+**Custom keymap for viewport navigation**
+- **Hotkeys**: `Shift+Mouse` (3D/2D/Image navigation) / `Alt+Left Drag` (Edit Mode selection switching)
+- **Features**: Custom mouse controls for 3D View, 2D View, Image Editor, quick selection mode switching in Edit Mode
+- **Perfect for**: Efficient viewport navigation, streamlined editing workflows, consistent input methods
+
 ### 🎯 Viewpie
 **Intuitive 3D viewport navigation with pie menus**
 - **Hotkeys**: `Q` (basic) / `Shift+Q` (extended)
@@ -103,14 +109,14 @@ npx kract@latest blender deploy
 
 | Extension | Version | Hotkeys | Primary Function |
 |-----------|---------|---------|------------------|
+| **GZR Keymap** | 1.0.0 | `Shift+Mouse` / `Alt+Left Drag` | Custom keymap for viewport navigation |
 | **Viewpie** | 1.0.0 | `Q` / `Shift+Q` | 3D viewport navigation with pie menus |
 | **Viewcam** | 1.0.0 | `Cmd/Ctrl+Shift+C` | Camera positioning and navigation |
 | **Versave** | 1.0.1 | `Cmd/Ctrl+Alt+S` / `Cmd/Ctrl+Shift+E` | Enhanced file versioning system with version manager |
 | **Wizender** | 1.0.1 | Auto on save | Smart render settings automation |
 | **Subamo** | 1.0.1 | Auto on save | Automatic backup file organization |
 | **Nukeshima** | 1.0.0 | `X` / `Shift+X` | Silent object deletion |
-| **SVG Importer Plus** | 1.0.1 | Import menu | Enhanced SVG import with mesh conversion |
-| **Vexer** | 1.0.0 | Add menu | Progressive geometric primitive creation |
+| **SVG Importer Plus** | 1.0.2 | Import menu | Enhanced SVG import with mesh conversion |
 
 ## 🎯 Workflow Integration Examples
 
@@ -127,19 +133,21 @@ npx kract@latest blender deploy
 4. **Nukeshima**: Fast object deletion without interrupting animation flow
 
 ### 🎨 General 3D Modeling Workflow
-1. **Viewpie**: Fast view switching during modeling (Front → Right → Top → Camera)
-2. **Viewcam**: Check composition and framing frequently
-3. **Versave**: Automatic version management with organized project structure + version manager for quick comparisons
-4. **Vexer**: Create basic geometric primitives for modeling foundations
+1. **GZR Keymap**: Efficient viewport navigation with custom mouse controls
+2. **Viewpie**: Fast view switching during modeling (Front → Right → Top → Camera)
+3. **Viewcam**: Check composition and framing frequently
+4. **Versave**: Automatic version management with organized project structure + version manager for quick comparisons
 5. **SVG Importer Plus**: Import logos and 2D graphics for 3D integration
+6. **Nukeshima**: Fast object deletion without interrupting workflow
 
 ## 💡 Pro Tips
 
+- **GZR Keymap + Viewpie**: Use custom mouse controls for navigation, then `Q` for quick view changes
 - **Combine Viewpie + Viewcam**: Use `Q` for quick view changes, then `Cmd+Shift+C` to match camera
 - **Versave + Wizender**: Automatic project organization with render settings applied on save
 - **Versave Version Manager**: Save frequently and use `Cmd+Shift+E` to quickly compare different approaches or revert changes
 - **SVG + Versave**: Import logos with SVG Importer Plus and maintain clean project versions
-- **Vexer + Nukeshima**: Create basic shapes with Vexer, then use silent deletion for rapid iteration
+- **GZR Keymap Edit Mode**: Use `Alt+Left Drag` to quickly switch selection modes (Vertex/Edge/Face)
 - **Muscle Memory**: Practice pie menu directions for lightning-fast viewport navigation
 
 ## 🔧 System Requirements
