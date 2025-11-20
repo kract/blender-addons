@@ -7,7 +7,7 @@ version = "1.0.2"
 type = "add-on"
 
 maintainer = "KRACT <developer@kract.jp>"
-copyright = [ "2025 KRACT. All rights reserved." ]
+copyright = [ "KRACT" ]
 
 license = ["SPDX:GPL-3.0-or-later"]
 
