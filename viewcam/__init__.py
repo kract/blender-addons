@@ -3,7 +3,7 @@ import platform
 
 bl_info = {
     "name": "Viewcam",
-    "author": "KRACT",
+    "author": "KRACT Studio",
     "version": (1, 0, 0),
     "blender": (4, 2, 0),
     "description": "Set current viewport view to active camera instantly",

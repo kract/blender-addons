@@ -3,7 +3,7 @@ from bpy.types import Menu
 
 bl_info = {
     "name": "Viewpie",
-    "author": "KRACT",
+    "author": "KRACT Studio",
     "version": (1, 0, 0),
     "blender": (4, 2, 0),
     "description": "Navigate 3D viewport with an intuitive pie menu for quick view changes",

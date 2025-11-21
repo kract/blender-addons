@@ -1,6 +1,6 @@
 bl_info = {
     "name": "GZR Keymap",
-    "author": "KRACT",
+    "author": "KRACT Studio",
     "version": (1, 0, 0),
     "blender": (4, 2, 0),
     "description": "Custom keymap for viewport navigation",

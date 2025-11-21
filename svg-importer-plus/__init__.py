@@ -9,7 +9,7 @@ import os
 
 bl_info = {
     "name": "SVG Importer Plus",
-    "author": "KRACT", 
+    "author": "KRACT Studio", 
     "version": (1, 0, 2),
     "blender": (4, 2, 0),
     "description": "Enhanced SVG import with automatic mesh conversion and origin centering",

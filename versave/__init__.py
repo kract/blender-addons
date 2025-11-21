@@ -72,7 +72,7 @@ def get_text(key):
 
 bl_info = {
     "name": "Versave",
-    "author": "KRACT",
+    "author": "KRACT Studio",
     "version": (1, 0, 1),
     "blender": (4, 2, 0),
     "description": "Enhanced incremental save with proper versioning format (_v prefix for numbered files)",

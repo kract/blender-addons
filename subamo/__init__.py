@@ -8,7 +8,7 @@ from bpy.app.translations import pgettext_iface as _
 
 bl_info = {
     "name": "Subamo",
-    "author": "KRACT",
+    "author": "KRACT Studio",
     "version": (1, 0, 1),
     "blender": (4, 2, 0),
     "description": "Automatically organize Blender backup files (.blend1 to .blend32) into a backup subdirectory",

@@ -5,7 +5,7 @@ from bpy.props import StringProperty, EnumProperty
 
 bl_info = {
     "name": "Wizender",
-    "author": "KRACT",
+    "author": "KRACT Studio",
     "version": (1, 0, 1),
     "blender": (4, 2, 0),
     "location": "Properties > Output Properties > Wizender",

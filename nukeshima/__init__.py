@@ -2,7 +2,7 @@ import bpy
 
 bl_info = {
     "name": "Nukeshima",
-    "author": "KRACT",
+    "author": "KRACT Studio",
     "version": (1, 0, 0),
     "blender": (4, 2, 0),
     "description": "Silent deletion without annoying confirmation dialogs - just nuke it instantly",
