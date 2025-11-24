@@ -13,7 +13,7 @@ license = ["SPDX:GPL-3.0-or-later"]
 
 blender_version_min = "4.2.0"
 
-website = "https://github.com/kract/blender-addons/tree/main/gzr-keymap"
+website = "https://kgx.jp/gzr-keymap"
 tags = ["3D View", "User Interface", "Keymap"]
 
 [permissions]
