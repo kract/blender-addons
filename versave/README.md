@@ -42,7 +42,7 @@ This creates inconsistent naming when mixing numbered and versioned files. **Ver
 1. Go to `Edit > Preferences > Extensions`
 2. Click the dropdown arrow next to "Repositories"
 3. Click "Add Remote Repository"
-4. Enter the repository URL: `https://blender.kract.jp/api/v1/extensions/`
+4. Enter the repository URL: `https://blender.kract.studio/api/v1/extensions/`
 5. Click "Add Repository"
 6. Browse and install "Versave" from the repository
 

@@ -24,7 +24,7 @@ A powerful Blender add-on that revolutionizes 3D viewport navigation with an int
 1. Go to `Edit > Preferences > Extensions`
 2. Click the dropdown arrow next to "Repositories"
 3. Click "Add Remote Repository"
-4. Enter the repository URL: `https://blender.kract.jp/api/v1/extensions/`
+4. Enter the repository URL: `https://blender.kract.studio/api/v1/extensions/`
 5. Click "Add Repository"
 6. Browse and install "Viewpie" from the repository
 
@@ -132,19 +132,19 @@ Press `Shift+Q` for advanced navigation options:
 
 All pie menu items correspond to Blender's default numpad shortcuts:
 
-| View              | Numpad Shortcut | Pie Menu Position      |
-| ----------------- | --------------- | ---------------------- |
-| Front             | `Numpad 1`      | Top-Right (1:30)       |
-| Back              | `Numpad Ctrl+1` | Top-Left (10:30)       |
-| Right             | `Numpad 3`      | Right (3:00)           |
-| Left              | `Numpad Ctrl+3` | Left (9:00)            |
-| Perspective       | `Numpad 5`      | Extended Menu (10:30)  |
-| Orthographic      | `Numpad 5`      | Extended Menu (1:30)   |
-| Top               | `Numpad 7`      | Top (12:00)            |
-| Bottom            | `Numpad Ctrl+7` | Bottom (6:00)          |
-| Camera            | `Numpad 0`      | Bottom-Left (7:30)     |
-| View Selected     | `Numpad .`      | Bottom-Right (4:30)    |
-| View All          | `Home`          | Extended Menu (9:00)   |
+| View          | Numpad Shortcut | Pie Menu Position     |
+| ------------- | --------------- | --------------------- |
+| Front         | `Numpad 1`      | Top-Right (1:30)      |
+| Back          | `Numpad Ctrl+1` | Top-Left (10:30)      |
+| Right         | `Numpad 3`      | Right (3:00)          |
+| Left          | `Numpad Ctrl+3` | Left (9:00)           |
+| Perspective   | `Numpad 5`      | Extended Menu (10:30) |
+| Orthographic  | `Numpad 5`      | Extended Menu (1:30)  |
+| Top           | `Numpad 7`      | Top (12:00)           |
+| Bottom        | `Numpad Ctrl+7` | Bottom (6:00)         |
+| Camera        | `Numpad 0`      | Bottom-Left (7:30)    |
+| View Selected | `Numpad .`      | Bottom-Right (4:30)   |
+| View All      | `Home`          | Extended Menu (9:00)  |
 
 ## Compatibility
 
