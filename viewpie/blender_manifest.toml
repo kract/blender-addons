@@ -13,7 +13,7 @@ license = ["SPDX:GPL-3.0-or-later"]
 
 blender_version_min = "4.2.0"
 
-website = "https://kgx.jp/viewpie"
+website = "https://github.com/kract/blender-addons/tree/main/viewpie"
 tags = ["3D View", "User Interface"]
 
 [permissions]

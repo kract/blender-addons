@@ -13,7 +13,7 @@ license = ["SPDX:GPL-3.0-or-later"]
 
 blender_version_min = "4.2.0"
 
-website = "https://kgx.jp/svg-importer-plus"
+website = "https://github.com/kract/blender-addons/tree/main/svg-importer-plus"
 tags = ["Import-Export", "Mesh", "User Interface"]
 
 [permissions]
