@@ -3,7 +3,7 @@ schema_version = "1.0.0"
 id = "viewcam"
 name = "Viewcam"
 tagline = "Set current viewport view to active camera instantly"
-version = "1.0.0"
+version = "1.0.1"
 type = "add-on"
 
 maintainer = "KRACT Studio <studio@kract.jp>"

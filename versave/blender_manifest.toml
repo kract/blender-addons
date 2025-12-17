@@ -3,7 +3,7 @@ schema_version = "1.0.0"
 id = "versave"
 name = "Versave - Version Manager"
 tagline = "Enhanced incremental save with proper versioning format and integrated version manager"
-version = "1.0.1"
+version = "1.0.2"
 type = "add-on"
 
 maintainer = "KRACT Studio <studio@kract.jp>"

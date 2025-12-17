@@ -3,7 +3,7 @@ schema_version = "1.0.0"
 id = "viewpie"
 name = "Viewpie"
 tagline = "Navigate 3D viewport with an intuitive pie menu for quick view changes"
-version = "1.0.0"
+version = "1.0.1"
 type = "add-on"
 
 maintainer = "KRACT Studio <studio@kract.jp>"
