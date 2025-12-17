@@ -7,7 +7,7 @@ from bpy.props import IntProperty
 from bpy.app.translations import pgettext_iface as _
 
 bl_info = {
-    "name": "Subamo",
+    "name": "Subamo - Backup mover to subdirectory",
     "author": "KRACT Studio",
     "version": (1, 0, 1),
     "blender": (4, 2, 0),

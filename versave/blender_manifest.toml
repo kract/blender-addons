@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
 id = "versave"
-name = "Versave"
+name = "Versave - Version Manager"
 tagline = "Enhanced incremental save with proper versioning format and integrated version manager"
 version = "1.0.1"
 type = "add-on"

@@ -71,7 +71,7 @@ def get_text(key):
     return texts[lang].get(key, key)
 
 bl_info = {
-    "name": "Versave",
+    "name": "Versave - Version Manager",
     "author": "KRACT Studio",
     "version": (1, 0, 1),
     "blender": (4, 2, 0),

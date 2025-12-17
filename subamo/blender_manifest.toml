@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
 id = "subamo"
-name = "Subamo"
+name = "Subamo - Backup mover to subdirectory"
 tagline = "Automatically organize Blender backup files into backup folder"
 version = "1.0.1"
 type = "add-on"
