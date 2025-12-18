@@ -48,8 +48,7 @@ def get_languages(self, context):
 # 言語プロパティグループ
 class LANGSWAP_LanguageItem(PropertyGroup):
     """Language item for collection"""
-    locale: EnumProperty(
-        items=get_languages,
+    locale: StringProperty(
         name="Language",
         description="Select language locale",
         default="en_US",
@@ -58,7 +57,7 @@ class LANGSWAP_LanguageItem(PropertyGroup):
 
 # Addon設定パネル
 class LANGSWAP_AddonPreferences(bpy.types.AddonPreferences):
-    bl_idname = __name__.split(".")[0]
+    bl_idname = "langswap"
 
     # 言語リスト（動的）
     languages: CollectionProperty(
@@ -154,9 +153,23 @@ class LANGSWAP_AddonPreferences(bpy.types.AddonPreferences):
 class LANGSWAP_UL_language_list(bpy.types.UIList):
     """UI list for language items"""
     def draw_item(self, context, layout, data, item, icon, active_data, active_propname):
+        # 利用可能な言語リストを取得
+        languages = get_languages(None, context)
+        
+        # 現在の値を表示
+        current_value = item.locale
+        # 言語リストから現在の値に対応する表示名を取得
+        display_name = current_value
+        for lang_code, lang_name, _ in languages:
+            if lang_code == current_value:
+                display_name = lang_name
+                break
+        
         if self.layout_type in {"DEFAULT", "COMPACT"}:
-            layout.prop(item, "locale", text="", emboss=False, icon="WORLD")
+            # 言語を直接テキスト入力で設定
+            row = layout.row(align=True)
+            row.prop(item, "locale", text="", icon="WORLD")
         elif self.layout_type in {"GRID"}:
             layout.alignment = "CENTER"
-            layout.prop(item, "locale", text="", emboss=False, icon="WORLD")
+            layout.label(text=display_name, icon="WORLD")
 
