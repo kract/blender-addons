@@ -29,18 +29,16 @@ import bpy
 ADDON_NAME = __name__
 
 classes = (
-    preferences.LANGSWAP_LanguageItem,
     preferences.LANGSWAP_AddonPreferences,
-    preferences.LANGSWAP_UL_language_list,
     operators.LANGSWAP_OT_switch_language,
-    operators.LANGSWAP_OT_add_language,
-    operators.LANGSWAP_OT_remove_language,
-    operators.LANGSWAP_OT_initialize_languages,
 )
 
 
 def register():
     """Register addon"""
+    # bl_idnameを実際のアドオン名に設定（Preferencesパネルを正しく表示するため）
+    preferences.LANGSWAP_AddonPreferences.bl_idname = __name__
+    
     # クラス登録
     for cls in classes:
         try:
