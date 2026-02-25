@@ -6,7 +6,7 @@ tagline = "Navigate 3D viewport with an intuitive pie menu for quick view change
 version = "1.0.1"
 type = "add-on"
 
-maintainer = "KRACT Studio <studio@kract.jp>"
+maintainer = "KRACT Studio <hello@kract.studio>"
 copyright = [ "KRACT" ]
 
 license = ["SPDX:GPL-3.0-or-later"]

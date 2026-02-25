@@ -6,7 +6,7 @@ tagline = "Magically configure render settings based on project filename"
 version = "1.0.2"
 type = "add-on"
 
-maintainer = "KRACT Studio <studio@kract.jp>"
+maintainer = "KRACT Studio <hello@kract.studio>"
 copyright = [ "KRACT" ]
 
 license = ["SPDX:GPL-3.0-or-later"]

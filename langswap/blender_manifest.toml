@@ -6,7 +6,7 @@ tagline = "Quickly switch between multiple languages with a single key press"
 version = "1.0.0"
 type = "add-on"
 
-maintainer = "KRACT Studio <studio@kract.jp>"
+maintainer = "KRACT Studio <hello@kract.studio>"
 copyright = [ "KRACT" ]
 
 license = ["SPDX:GPL-3.0-or-later"]
