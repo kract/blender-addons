@@ -1,4 +1,4 @@
-# GZR Keymap
+# DOG Keymap
 
 A Blender add-on that provides custom keymap configurations for viewport navigation. This add-on customizes mouse controls for 3D View, 2D View, and Image Editor to improve workflow efficiency.
 
@@ -8,25 +8,24 @@ A Blender add-on that provides custom keymap configurations for viewport navigat
 - **2D View Navigation**: Custom mouse controls for panning and zooming in 2D View
 - **Image Editor Navigation**: Custom mouse controls for panning and zooming in Image Editor
 - **Edit Mode Selection Mode Switching**: Quick selection mode switching using Alt + mouse drag in Edit Mode
-- **Shift Key Modifier**: Navigation controls use Shift key modifier to avoid conflicts with selection mode switching
 
 ## Keymap Configuration
 
 ### 3D View
 
-- **Rotate View**: `Shift + Left Mouse Button`
-- **Pan View**: `Shift + Middle Mouse Button`
-- **Zoom View**: `Shift + Right Mouse Button`
+- **Rotate View**: `Ctrl + Left Mouse Button`
+- **Pan View**: `Ctrl + Middle Mouse Button`
+- **Zoom View**: `Ctrl + Right Mouse Button`
 
 ### 2D View
 
-- **Pan View**: `Shift + Left Mouse Button` or `Shift + Middle Mouse Button`
-- **Zoom View**: `Shift + Right Mouse Button`
+- **Pan View**: `Ctrl + Left Mouse Button` or `Ctrl + Middle Mouse Button`
+- **Zoom View**: `Ctrl + Right Mouse Button`
 
 ### Image Editor
 
-- **Pan View**: `Shift + Left Mouse Button` or `Shift + Middle Mouse Button`
-- **Zoom View**: `Shift + Right Mouse Button`
+- **Pan View**: `Ctrl + Left Mouse Button` or `Ctrl + Middle Mouse Button`
+- **Zoom View**: `Ctrl + Right Mouse Button`
 
 ### Mesh (Edit Mode)
 
@@ -43,7 +42,7 @@ A Blender add-on that provides custom keymap configurations for viewport navigat
 3. Click "Add Remote Repository"
 4. Enter the repository URL: `https://blender.kract.studio/api/v1/extensions/`
 5. Click "Add Repository"
-6. Browse and install "GZR Keymap" from the repository
+6. Browse and install "DOG Keymap" from the repository
 
 ### Method 2: Drag and Drop (Blender 4.2+)
 
@@ -56,15 +55,15 @@ A Blender add-on that provides custom keymap configurations for viewport navigat
 1. Download the add-on files
 2. Go to `Edit > Preferences > Add-ons`
 3. Click `Install...` and select the ZIP file
-4. Enable the "GZR Keymap" add-on
+4. Enable the "DOG Keymap" add-on
 
 ## Usage
 
 After installation, the custom keymap will be automatically active:
 
-- In **3D Viewport**: Use `Shift + mouse buttons` to rotate, pan, and zoom
-- In **2D View**: Use `Shift + mouse buttons` to pan and zoom
-- In **Image Editor**: Use `Shift + mouse buttons` to pan and zoom
+- In **3D Viewport**: Use `Ctrl + mouse buttons` to rotate, pan, and zoom
+- In **2D View**: Use `Ctrl + mouse buttons` to pan and zoom
+- In **Image Editor**: Use `Ctrl + mouse buttons` to pan and zoom
 - In **Edit Mode**: Use `Alt + Left Mouse Drag` in different directions to switch selection modes:
   - Drag left → Vertex selection mode
   - Drag down → Edge selection mode

@@ -1,5 +1,5 @@
 bl_info = {
-    "name": "GZR Keymap",
+    "name": "DOG Keymap",
     "author": "KRACT Studio",
     "version": (1, 0, 1),
     "blender": (4, 2, 0),
@@ -17,7 +17,7 @@ else:
 
 import bpy
 
-classes = (preferences.GZR_KEYMAP_AddonPreferences,)
+classes = (preferences.DOG_KEYMAP_AddonPreferences,)
 
 def register():
     """Register addon"""

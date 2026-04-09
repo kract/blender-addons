@@ -1,5 +1,5 @@
 {
-  "name": "kract-blender-addons",
+  "name": "@kract/blender-addons",
   "description": "KRACT Blender Extensions Collection",
   "private": true,
   "scripts": {
