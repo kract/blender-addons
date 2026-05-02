@@ -4,7 +4,7 @@ from bpy.types import AddonPreferences
 
 # アドオンPreferences設定クラス
 class WIZENDER_AddonPreferences(AddonPreferences):
-    bl_idname = "blender_kract_studio.wizender"
+    bl_idname = "bl_ext.blender_kract_studio.wizender"
     # 出力パス設定
     output_path: StringProperty(
         name="Output Path",

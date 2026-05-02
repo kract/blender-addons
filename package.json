@@ -3,7 +3,7 @@
   "description": "KRACT Blender Extensions Collection",
   "private": true,
   "scripts": {
-    "package": "npx kract@latest blender package",
+    "build": "npx kract@latest blender package",
     "deploy": "npx kract@latest blender deploy"
   },
   "keywords": [
