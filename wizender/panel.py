@@ -12,7 +12,7 @@ class WIZENDER_PT_output_panel(bpy.types.Panel):
         layout = self.layout
         
         # 現在の設定表示
-        addon_prefs = context.preferences.addons["bl_ext.blender_kract_studio.wizender"].preferences
+        addon_prefs = context.preferences.addons[__package__].preferences
         
         box = layout.box()
         box.label(text="Current Global Settings", icon='INFO')

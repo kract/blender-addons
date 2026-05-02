@@ -12,7 +12,7 @@ def set_render_settings():
     render = bpy.context.scene.render
     
     # アドオンPreferencesから設定を取得
-    addon_prefs = bpy.context.preferences.addons["bl_ext.blender_kract_studio.wizender"].preferences
+    addon_prefs = bpy.context.preferences.addons[__package__].preferences
 
     # 出力パスの設定（プロジェクト名をプレースホルダーに置換）
     output_path = addon_prefs.output_path.replace("{project_name}", project_name)
