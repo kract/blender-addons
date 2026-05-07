@@ -8,8 +8,8 @@ class WIZENDER_AddonPreferences(AddonPreferences):
     # 出力パス設定
     output_path: StringProperty(
         name="Output Path",
-        description="Render output path (Default: //render/{project_name}/{project_name}_####)",
-        default="//render/{project_name}/{project_name}_####",
+        description="Render output path (Default: //render/{project_name}/{scene_name}/{project_name}_{scene_name}_####)",
+        default="//render/{project_name}/{scene_name}/{project_name}_{scene_name}_####",
         subtype='DIR_PATH'
     )
     
@@ -59,7 +59,7 @@ class WIZENDER_AddonPreferences(AddonPreferences):
         
         # 出力パス設定
         box.prop(self, "output_path")
-        box.label(text="* {project_name} will be replaced with project name", icon='INFO')
+        box.label(text="* {project_name} → project filename, {scene_name} → scene name", icon='INFO')
         
         # ファイルフォーマット設定
         box.prop(self, "file_format")
