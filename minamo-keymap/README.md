@@ -1,4 +1,4 @@
-# DOG Keymap
+# Minamo Keymap
 
 A Blender add-on that provides custom keymap configurations for viewport navigation. This add-on customizes mouse controls for 3D View, 2D View, and Image Editor to improve workflow efficiency.
 
@@ -42,7 +42,7 @@ A Blender add-on that provides custom keymap configurations for viewport navigat
 3. Click "Add Remote Repository"
 4. Enter the repository URL: `https://blender.kract.studio/api/v1/extensions/`
 5. Click "Add Repository"
-6. Browse and install "DOG Keymap" from the repository
+6. Browse and install "Minamo Keymap" from the repository
 
 ### Method 2: Drag and Drop (Blender 4.2+)
 
@@ -55,7 +55,7 @@ A Blender add-on that provides custom keymap configurations for viewport navigat
 1. Download the add-on files
 2. Go to `Edit > Preferences > Add-ons`
 3. Click `Install...` and select the ZIP file
-4. Enable the "DOG Keymap" add-on
+4. Enable the "Minamo Keymap" add-on
 
 ## Usage
 

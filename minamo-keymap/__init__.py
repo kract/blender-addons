@@ -1,5 +1,5 @@
 bl_info = {
-    "name": "DOG Keymap",
+    "name": "Minamo Keymap",
     "author": "KRACT Studio",
     "version": (1, 0, 1),
     "blender": (4, 2, 0),
@@ -17,7 +17,7 @@ else:
 
 import bpy
 
-classes = (preferences.DOG_KEYMAP_AddonPreferences,)
+classes = (preferences.MINAMO_KEYMAP_AddonPreferences,)
 
 def register():
     """Register addon"""

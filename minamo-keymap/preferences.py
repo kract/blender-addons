@@ -6,8 +6,8 @@ import rna_keymap_ui
 # グローバル変数（keymap.pyから参照される）
 addon_keymaps = []
 
-class DOG_KEYMAP_AddonPreferences(AddonPreferences):
-    bl_idname = "dog_keymap"  # アドオン名（ディレクトリ名からハイフンをアンダースコアに変換）
+class MINAMO_KEYMAP_AddonPreferences(AddonPreferences):
+    bl_idname = "minamo_keymap"  # アドオン名（ディレクトリ名からハイフンをアンダースコアに変換）
 
     tab_addon_menu: EnumProperty(
         name="tab",
