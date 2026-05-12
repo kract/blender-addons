@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Versave - Version Manager",
     "author": "KRACT Studio",
-    "version": (1, 0, 2),
+    "version": (1, 1, 0),
     "blender": (4, 2, 0),
     "description": "Enhanced incremental save with proper versioning format (_v prefix for numbered files)",
     "location": "File > Save (Cmd+S), Save As (Cmd+Alt+S)",
@@ -10,15 +10,18 @@ bl_info = {
 
 if "bpy" in locals():
     import importlib
+    importlib.reload(preferences)
     importlib.reload(operators)
     importlib.reload(keymap)
 else:
+    from . import preferences
     from . import operators
     from . import keymap
 
 import bpy
 
 classes = (
+    preferences.VERSAVE_AddonPreferences,
     operators.VERSAVE_OT_save_initial,
     operators.VERSAVE_OT_open_version,
     operators.VERSAVE_OT_version_manager,

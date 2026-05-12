@@ -82,66 +82,77 @@ class VERSAVE_OT_save_initial(bpy.types.Operator, ExportHelper):
         default="*.blend",
         options={'HIDDEN'},
     )
-    
+    create_project_dir: bpy.props.BoolProperty(
+        name="プロジェクトディレクトリを作成",
+        description="プロジェクト名のディレクトリを作成してその中に保存する",
+        default=True,
+    )
+
     def execute(self, context):
         # 現在のファイルパスを取得
         current_filepath = bpy.data.filepath
-        
+
         if current_filepath:
             # 既存ファイルの場合は通常の保存
             bpy.ops.wm.save_mainfile()
             return {'FINISHED'}
-        
+
         # 新規ファイルの場合、選択されたファイルパスで保存
         filepath = self.filepath
-        
+
         # ファイル名に_v1が含まれていない場合は追加
         if not filepath.endswith('.blend'):
             filepath += '.blend'
-        
+
         base_directory = os.path.dirname(filepath)
         filename = os.path.basename(filepath)
         name, ext = os.path.splitext(filename)
-        
+
         # _v1が含まれていない場合は追加
         if not re.search(r'_v\d+$', name):
             name = f"{name}_v1"
-        
+
         # プロジェクト名を取得（_v1を除外）
         project_name = re.sub(r'_v\d+$', '', name)
-        
-        # プロジェクトディレクトリを作成
-        project_dir = os.path.join(base_directory, project_name)
-        
+
         try:
-            # プロジェクトディレクトリとサブフォルダを作成
-            os.makedirs(project_dir, exist_ok=True)
-            os.makedirs(os.path.join(project_dir, 'render'), exist_ok=True)
-            os.makedirs(os.path.join(project_dir, 'tex'), exist_ok=True)
-            
-            # プロジェクトディレクトリ内にblendファイルを保存
-            final_filepath = os.path.join(project_dir, name + ext)
-            
-            bpy.ops.wm.save_as_mainfile(filepath=final_filepath)
-            self.report({'INFO'}, f"{get_text('created_project')}: {project_name}/ with {os.path.basename(final_filepath)}")
+            if self.create_project_dir:
+                # プロジェクトディレクトリとサブフォルダを作成して保存
+                project_dir = os.path.join(base_directory, project_name)
+                os.makedirs(project_dir, exist_ok=True)
+                os.makedirs(os.path.join(project_dir, 'render'), exist_ok=True)
+                os.makedirs(os.path.join(project_dir, 'tex'), exist_ok=True)
+                final_filepath = os.path.join(project_dir, name + ext)
+                bpy.ops.wm.save_as_mainfile(filepath=final_filepath)
+                self.report({'INFO'}, f"{get_text('created_project')}: {project_name}/ with {os.path.basename(final_filepath)}")
+            else:
+                # ディレクトリを作成せず選択パスに直接保存
+                final_filepath = os.path.join(base_directory, name + ext)
+                bpy.ops.wm.save_as_mainfile(filepath=final_filepath)
+                self.report({'INFO'}, f"{get_text('saved_as')}: {os.path.basename(final_filepath)}")
         except Exception as e:
             self.report({'ERROR'}, f"{get_text('failed_to_create')}: {str(e)}")
             return {'CANCELLED'}
-        
+
         return {'FINISHED'}
-    
+
     def invoke(self, context, event):
         # 現在のファイルパスを取得
         current_filepath = bpy.data.filepath
-        
+
         if current_filepath:
             # 既存ファイルの場合は通常の保存
             bpy.ops.wm.save_mainfile()
             return {'FINISHED'}
-        
+
+        # アドオン設定のデフォルト値を反映
+        addon_prefs = context.preferences.addons.get(__package__)
+        if addon_prefs:
+            self.create_project_dir = addon_prefs.preferences.create_project_dir
+
         # 新規ファイルの場合、デフォルトのファイル名を"untitled_v1.blend"に設定
         self.filepath = "untitled_v1.blend"
-        
+
         context.window_manager.fileselect_add(self)
         return {'RUNNING_MODAL'}
 
